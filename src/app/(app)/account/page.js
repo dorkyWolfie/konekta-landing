@@ -1,0 +1,40 @@
+'use server';
+import mongoose from "mongoose";
+import UsernameForm from "@/components/forms/UsernameForm";
+import PageSettingsForm from "@/components/forms/pageSettingsForm";
+import PageButtonsForm from "@/components/forms/pageButtonsForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { page } from "@/models/page";
+import PageLinksForm from "@/components/forms/pageLinksForm";
+
+
+export default async function AccountPage({ searchParams }) {
+    const session = await getServerSession(authOptions);
+    const resolvedSearchParams = await searchParams;
+    const desiredUsername = resolvedSearchParams?.desiredUsername;
+
+    if (!session) {
+     return redirect('/');
+    }
+
+    mongoose.connect(process.env.MONGO_URI);
+    const accPage = await page.findOne({owner: session?.user?.email});
+    if (accPage) {
+        const plainPage = JSON.parse(JSON.stringify(accPage));
+        return (
+            <>
+                <PageSettingsForm page={plainPage} user={session.user} />
+                <PageButtonsForm page={plainPage} user={session.user} />
+                <PageLinksForm page={plainPage} user={session.user} />
+            </>
+        )
+    }
+
+    return (
+        <div>
+            <UsernameForm desiredUsername={desiredUsername} />
+        </div>
+    );
+}

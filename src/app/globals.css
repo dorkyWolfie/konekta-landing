@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-sky-100/40 overflow-x-hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+  margin-bottom: 5px;
+  background: transparent;
+}
+
+input[type="text"], textarea {
+  @apply bg-gray-200/60 w-full block py-2 px-2 mb-2 border border-transparent;
+}
+
+input[type="text"]:hover, textarea:hover {
+  @apply border border-blue-600;
+}
+
+label.input-label {
+  @apply uppercase text-gray-500 text-xs;
+}
+
+.radio-togglers {
+  @apply p-1 bg-gray-200 inline-flex;
+}
+
+.radio-togglers div {
+  @apply p-2 px-4 text-gray-500 block flex items-center gap-2 cursor-pointer;
+}
+
+.radio-togglers input[type="radio"] {
+  @apply hidden;
+}
+
+.radio-togglers input[type="radio"]:hover + div {
+  @apply text-blue-600;
+}
+
+.radio-togglers input[type="radio"]:checked + div {
+  @apply bg-white text-blue-600;
+}
+
+.sortable-ghost {
+  opacity: .2;
+}
+
+.corner-border {
+  @apply py-2 px-4 border-2 border-gray-400/70;
+  --s: 15px; /* the size on the corner */
+  -webkit-mask:
+  conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+  0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+  linear-gradient(#000 0 0) content-box;
+}
