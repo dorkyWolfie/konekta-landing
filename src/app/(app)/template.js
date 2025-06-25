@@ -31,11 +31,13 @@ export default async function AppTemplate({ children, ...rest }) {
 
   return (
     <html lang="mk">
-      {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
+      <head>
+        <meta name="robots" content="noindex,nofollow" />
+        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
+      </head>
       <body className="overflow-x-hidden">
         <Toaster />
         <main className="flex min-h-screen">
-          
           <aside id="sidebar" className="bg-white min-w-60 top-0 left-0 bottom-0 md:block justify-center hidden z-20 transition-all duration-500">
             <div className="sticky top-0 p-4 pt-8 flex flex-col items-center">
               <div className="rounded-full overflow-hidden aspect-square w-24 mx-auto">

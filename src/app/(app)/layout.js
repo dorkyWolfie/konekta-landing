@@ -5,7 +5,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="mk">
+      <head><meta name="robots" content="noindex,nofollow" /></head>
       <body>{children}</body>
     </html>
   )
