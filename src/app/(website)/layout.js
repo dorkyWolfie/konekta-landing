@@ -5,6 +5,11 @@ import Footer from "@/components/footer";
 export const metadata = {
   title: "Конекта",
   description: "1 допир, 1000 можности",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
 };
 
 export default function RootLayout({ children }) {

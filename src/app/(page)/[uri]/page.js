@@ -32,14 +32,15 @@ function buttonLink(key, value) {
 }
 
 export default async function UserPage({params}) {
-  const uri = params.uri;
+  const resolvedParams = await params;
+  const uri = resolvedParams.uri;
   await mongoose.connect(process.env.MONGO_URI);
   const Page = await page.findOne({uri});
 
   if (!Page) {
     return (
       <div className="p-8 text-center text-red-500">
-        Page not found for URI: <strong>{uri}</strong>
+        Страната не е пронајдена: <strong>{uri}</strong>
       </div>
     );
   }
@@ -49,7 +50,7 @@ export default async function UserPage({params}) {
 
   return (
     <div>
-      <div className="w-full h-screen fixed z-[-10] absolute top-0 " style={{background: Page.bgColor, opacity: .3}}></div>
+      <div className="w-full h-screen fixed z-[-10] absolute top-0 bg-gray-50" style={{background: Page.bgColor, opacity: .3}}></div>
       <div 
         className="h-80 bg-blue-100 bg-cover bg-center"
         style={

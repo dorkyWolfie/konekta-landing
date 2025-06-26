@@ -8,6 +8,7 @@ import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faW
 import { useState } from "react";
 import { savePageButtons } from "@/actions/pageActions";
 import { ReactSortable } from "react-sortablejs";
+import { useRouter } from 'next/navigation';
 
 export const allButtons = [
   {key: 'email', label: 'E-mail', icon: faEnvelope, placeholder: "username@mail.com"},
@@ -23,6 +24,7 @@ export const allButtons = [
 ];
 
 export default function PageButtonsForm({user, page}) {
+  const router = useRouter();
   const pageSavedButtonsKeys = Object.keys(page?.buttons || {});
   const pageSavedButtonsInfo = pageSavedButtonsKeys
   .map(k => allButtons.find(b => b.key === k));
@@ -35,8 +37,10 @@ export default function PageButtonsForm({user, page}) {
   }
 
   async function saveButtons(formData) {
+    
     await savePageButtons(formData);
     toast.success('Зачувано!');
+    router.refresh();
   }
 
   function removeButton({key:keyToRemove}) {
@@ -61,7 +65,7 @@ export default function PageButtonsForm({user, page}) {
               </div>
               <div className="flex grow h-full">
                 <input 
-                  type="text" name={b.key} defaultValue={page.buttons[b.key]}
+                  type="text" name={b.key} defaultValue={page?.buttons?.[b.key] || ''}
                   placeholder={b.placeholder} style={{marginBottom: '0'}} />
                 <button 
                   type="button" onClick={() => removeButton(b)}

@@ -12,8 +12,10 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { resolve } from "styled-jsx/css";
 import { upload } from "@/libs/upload";
+import { useRouter } from 'next/navigation';
 
 export default function PageSettingsForm({page, user}) {
+  const router = useRouter();
   const [bgType, setBgType] = useState(page.bgType);
   const [bgColor, setBgColor] = useState(page.bgColor);
   const [bgImage, setBgImage] = useState(page.bgImage);
@@ -23,6 +25,7 @@ export default function PageSettingsForm({page, user}) {
     const result = await savePageSettings(formData);
     if (result) {
       toast.success('Зачувано!');
+      router.refresh();
     }
   }
 
@@ -59,7 +62,7 @@ export default function PageSettingsForm({page, user}) {
                 onChange={val => setBgType(val)}
               />
               {bgType === 'color' && (
-                <div className="bg-gray-200 shadow text-gray-700 p-2 mt-2">
+                <div className="bg-gray-100 shadow text-gray-700 p-2 mt-2">
                   <div className="flex gap-2 justify-center hover:text-blue-600">
                     <span>Одбери боја за позадината</span>
                     <FontAwesomeIcon icon={faArrowRight} className="self-center" />
@@ -72,14 +75,14 @@ export default function PageSettingsForm({page, user}) {
               )}
               {bgType === 'image' && (
                 <div className="flex justify-center">
-                  <div className="bg-white shadow px-4 py-2 mt-2 flex gap-2 items-center cursor-pointer hover:text-blue-600">
+                  <label className="bg-white shadow px-4 py-2 mt-2 flex gap-2 items-center cursor-pointer hover:text-blue-600">
                     <input type="hidden" name="bgImage" value={bgImage} />
-                    <input 
+                    <input
                       type="file" onChange={handleCoverImageChange}
-                      name="image" className="hidden" />
+                      className="hidden" />
                     <FontAwesomeIcon icon={faCloudArrowUp} />
                     <span>Промени фотографија</span>
-                  </div>
+                  </label>
                 </div>
               )}
             </div>
