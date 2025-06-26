@@ -23,7 +23,7 @@ export const allButtons = [
 ];
 
 export default function PageButtonsForm({user, page}) {
-  const pageSavedButtonsKeys = Object.keys(page.buttons);
+  const pageSavedButtonsKeys = Object.keys(page?.buttons || {});
   const pageSavedButtonsInfo = pageSavedButtonsKeys
   .map(k => allButtons.find(b => b.key === k));
   const [activeButtons, setActiveButtons] = useState(pageSavedButtonsInfo);
@@ -50,7 +50,7 @@ export default function PageButtonsForm({user, page}) {
   return (
     <SectionBox>
       <form action={saveButtons}>
-        {/* <h2 className="text-2xl font-bold mb-4">Комуникација и социјални мрежи</h2> */}
+        <h2 className="text-2xl font-bold mb-4">Комуникација и социјални мрежи</h2>
         <ReactSortable handle=".handle" list={activeButtons} setList={setActiveButtons}>
           {activeButtons.map(b => (
             <div key={b.key} className="mb-4 flex items-center md:flex-nowrap flex-wrap">

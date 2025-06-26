@@ -49,7 +49,7 @@ export default async function UserPage({params}) {
 
   return (
     <div>
-      <div className="w-full h-screen fixed z-[-10] absolute top-0 " style={{background: Page.bgColor}}></div>
+      <div className="w-full h-screen fixed z-[-10] absolute top-0 " style={{background: Page.bgColor, opacity: .3}}></div>
       <div 
         className="h-80 bg-blue-100 bg-cover bg-center"
         style={
