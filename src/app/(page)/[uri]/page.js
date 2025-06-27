@@ -28,7 +28,7 @@ function buttonLink(key, value) {
   if (key === 'email') {
     return 'mailto:'+value;
   }
-  return value;
+  return 'https://'+value;
 }
 
 export default async function UserPage({params}) {
@@ -40,7 +40,7 @@ export default async function UserPage({params}) {
   if (!Page) {
     return (
       <div className="p-8 text-center text-red-500">
-        Страната не е пронајдена: <strong>{uri}</strong>
+        Страната не е пронајдена: <strong>/{uri}</strong>
       </div>
     );
   }
@@ -90,7 +90,7 @@ export default async function UserPage({params}) {
           <Link 
             key={link.url}
             ping={process.env.URL+'/api/click?url='+btoa(link.url)+'&page='+Page.uri}
-            target="_blank" href={link.url} className="bg-gray-300/60 p-2 flex gap-4 items-center" >
+            target="_blank" href={'https://'+link.url} className="bg-gray-300/60 p-2 flex gap-4 items-center" >
             <div className="corner-border aspect-square w-15 h-15 p-2 flex justify-center items-center">
               {link.icon && (
                 <Image src={link.icon} alt={'icon'} width={256} height={256} className="w-20 h-20 object-contain" />

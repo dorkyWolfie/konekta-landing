@@ -10,7 +10,6 @@ import { page } from "@/models/page";
 import { savePageSettings } from "@/actions/pageActions";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
-import { resolve } from "styled-jsx/css";
 import { upload } from "@/libs/upload";
 import { useRouter } from 'next/navigation';
 
@@ -108,7 +107,7 @@ export default function PageSettingsForm({page, user}) {
             <input 
               type="text" id="nameIn" name="displayName"
               defaultValue={page.displayName} placeholder="Трајко Трајковски" />
-            <label className="input-label" htmlFor="companyIn">Име на фирма</label>
+            <label className="input-label" htmlFor="companyIn">Име и презиме</label>
             <input 
               type="text" id="companyIn" name="company"
               defaultValue={page.company} placeholder="Каде работиш?" />

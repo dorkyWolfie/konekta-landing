@@ -12,7 +12,7 @@ import { headers } from "next/headers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { openMenu, closeMenu } from "@/components/mobMenu";
+import { openMenu } from "@/components/mobMenu";
 
 
 export const metadata = {
@@ -32,8 +32,7 @@ export default async function AppTemplate({ children, ...rest }) {
   return (
     <html lang="mk">
       <head>
-        <meta name="robots" content="noindex,nofollow" />
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
+        <meta name="robots" content="noindex,nofollow" /> 
       </head>
       <body className="overflow-x-hidden">
         <Toaster />

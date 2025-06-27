@@ -1,11 +1,11 @@
 import SectionBox from "@/components/layout/sectionBox";
+import mongoose from "mongoose";
+import Chart from "@/components/chart";
 import { event } from "@/models/event";
 import { page } from "@/models/page";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import mongoose from "mongoose";
-import Chart from "@/components/chart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { format, formatISO9075, isToday } from "date-fns";
@@ -32,7 +32,7 @@ export default async function AnalyticsPage() {
         _id: {
           $dateToString: {
             date: "$createdAt",
-            format: "%d-%m-%Y",
+            format: "%Y-%m-%d",
           },
         },
         count: { "$count": {} },
@@ -67,8 +67,8 @@ export default async function AnalyticsPage() {
               <FontAwesomeIcon icon={faLink} />
             </div>
             <div className="grow">
-              <h3>{link.title || 'Без име'}</h3>
-              <p className="text-gray-500 text-sm">{link.subtitle || 'Без подпис'}</p>
+              <h3>{link.title || 'Нема наслов'}</h3>
+              <p className="text-gray-500 text-sm">{link.subtitle || 'Нема поднаслов'}</p>
               <a target="_blank" href={link.url} className="text-blue-700 text-xs">{link.url}</a>
             </div>
             <div className="text-center flex items-center justify-center gap-4">
