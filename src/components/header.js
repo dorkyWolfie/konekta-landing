@@ -23,10 +23,7 @@ export default async function Header () {
                         </>
                     )}
                     {!session && (
-                        <>
-                            <Link href={"/login"}>Најава</Link>
-                            <Link href={"/register"}>Креирај профил</Link>
-                        </>
+                        <Link className="hover:text-blue-500" href={"/login"}>Најава</Link>
                     )}
                 </nav>
             </div>

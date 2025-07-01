@@ -33,7 +33,7 @@ export default function AppSidebar() {
         iconClasses={'w-6 h-6'}
       />
       <div className="absolute top-88 left-4 w-52 h-0.5 bg-gray-200 mt-6"></div>
-      <Link href={'/'} className="flex items-center gap-2 text-xs uppercase text-gray-600 pt-7 cursor-pointer hover:text-blue-500">
+      <Link href={'/login'} className="flex items-center gap-2 text-xs uppercase text-gray-600 pt-7 cursor-pointer hover:text-blue-500">
         <FontAwesomeIcon 
           icon={faArrowLeft}
           className={"w-3 h-3"} />

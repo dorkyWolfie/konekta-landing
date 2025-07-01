@@ -1,13 +1,24 @@
+import HeroForm from "@/components/forms/heroForm";
 import LoginGoogle from "@/components/buttons/LoginGoogle";
+import Image from "next/image";
 
 export default function Login() {
-    return (
+  return (
+    <section className="section flex flex-row md:justify-between items-center md:gap-20 md:flex-nowrap flex-wrap justify-center items-start mb-10">
+      <div>
+        <Image src="/Artboard 1.svg" alt="picture" width={400} height={400} />
+      </div>
+      <div className="flex flex-col items-center justify-center my-auto">
         <div>
-            <div className="p-4 max-w-xs mx-auto">
-                <h1 className="text-4xl font-bold text-center mb-2">Најава</h1>
-                <p className="text-center mb-6 text-gray-500">Најави се во твојот профил</p>
-            <LoginGoogle />
-            </div>
+          <h1 className="text-4xl text-gray-900 font-bold text-center mb-2">Добредојде во Конекта!</h1>
+          <h2  className="text-lg text-gray-600 text-center mb-2">Најави се во твојот профил.</h2>
+          <LoginGoogle />
         </div>
-    );
+        <div className="mt-8">
+          <p className="text-md text-gray-600 text-center mb-2">Немаш профил?<br />Одбери корисничко име и креирај.</p>
+          <HeroForm />
+        </div>
+      </div>
+    </section>
+  );
 }

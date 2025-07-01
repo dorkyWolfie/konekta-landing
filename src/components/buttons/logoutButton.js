@@ -1,6 +1,6 @@
 'use client'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { signOut } from "next-auth/react";
 
 export default function LogoutButton({
@@ -14,12 +14,12 @@ export default function LogoutButton({
         className={className}>
             {iconLeft && (
                 <FontAwesomeIcon 
-                    icon={faRightFromBracket} className={iconClasses} />
+                    icon={faArrowRightFromBracket} className={iconClasses} />
             )}
             <span>Одјава</span>
             {!iconLeft && (
                 <FontAwesomeIcon 
-                icon={faRightFromBracket} className={iconClasses} />
+                icon={faArrowRightFromBracket} className={iconClasses} />
             )}
         </button>
     );

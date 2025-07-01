@@ -1,23 +1,21 @@
 // 'use server';
 import "../globals.css";
+import mongoose from "mongoose";
+import Link from "next/link";
+import Image from "next/image";
+import AppSidebar from "@/components/layout/appSidebar";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import { Toaster } from "react-hot-toast";
-import Image from "next/image";
-import AppSidebar from "@/components/layout/appSidebar";
 import { page } from "@/models/page";
-import mongoose from "mongoose";
-import { headers } from "next/headers";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import { openMenu } from "@/components/mobMenu";
-
+import { Toaster } from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare, faBars } from "@fortawesome/free-solid-svg-icons";
 
 export const metadata = {
   title: "Конекта",
-  description: "1 допир, 1000 можности",
+  description: "Твојата дигитална прва импресија",
 };
 
 export default async function AppTemplate({ children, ...rest }) {
@@ -47,7 +45,8 @@ export default async function AppTemplate({ children, ...rest }) {
                   target="_blank"
                   href={'/' + Page.uri} 
                   className="text-center mt-4 flex gap-1 items-center justify-center hover:text-blue-500">
-                  konekta.mk/{Page.uri}
+                  <span>konekta.mk/{Page.uri}</span>
+                  <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-3 h-3" />
                 </Link>
               )}
               <div className="w-full h-0.5 bg-gray-200 mt-6"></div>

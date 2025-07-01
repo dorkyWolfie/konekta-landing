@@ -1,29 +1,24 @@
 import "../globals.css";
+import { Manrope } from 'next/font/google'
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 export const metadata = {
   title: "Конекта",
-  description: "1 допир, 1000 можности",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-  },
+  description: "Твојата дигитална прва импресија",
 };
+
+const manrope = Manrope({
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['cyrillic', 'latin'],
+})
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="mk">
-      <head>
-        <meta name="robots" content="noindex,nofollow" />
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
-      </head>
+    <html lang="mk" className={manrope.className}>
       <body>
         <Header />
-        <main className="max-w-6xl md:m-auto p-6 md:h-100">
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>
