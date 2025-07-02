@@ -22,7 +22,7 @@ export default function UsernameForm({desiredUsername}) {
   return (
     <form onSubmit={handleSubmit}>
       <h1 className="text-4xl font-bold text-center mb-2">Потврди го твоето корисничко име!</h1>
-      <p className="text-center mb-6 text-gray-500">Одбери корисничко име.</p>
+      <p className="text-center mb-6 text-[#6b7280]">Одбери корисничко име.</p>
       <div className="max-w-xs mx-auto">
         <input 
           name="username"
@@ -30,11 +30,11 @@ export default function UsernameForm({desiredUsername}) {
           defaultValue={desiredUsername}
           type="text" placeholder="username / корисничко име" />
         {taken && (
-          <div className="bg-red-200 border border-red-500 p-2 mb-2 text-center">
+          <div className="bg-[#fecaca] border border-[#ef4444] p-2 mb-2 text-center">
             Ова корисничко име е зафатено.
           </div>
         )}
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 block mx-auto w-full hover:bg-transparent hover:text-blue-600 hover:border-2 border-blue-500">Зачувај</button>
+        <button type="submit" className="bg-[#3b82f6] text-white py-2 px-4 block mx-auto w-full hover:bg-transparent hover:text-[#2563eb] hover:border-2 border-[#3b82f6]">Зачувај</button>
       </div>
     </form>
   )

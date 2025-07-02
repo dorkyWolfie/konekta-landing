@@ -28,10 +28,10 @@ export default function HeroForm() {
     return (
     <form 
     onSubmit={handleSubmit}
-    className="inline-flex items-center shadow-sm shadow-gray-700/20 bg-white ">
+    className="inline-flex items-center shadow-xs shadow-[#4b5563]/50 bg-white ">
       <span className="bg-none py-4 pl-4">konekta.mk/</span>
-      <input type="text" className="border-none self-center hover:text-blue-700" placeholder="username" style={{background: 'none', marginBottom: 0, paddingLeft: 1}} />
-      <button type="submit" className="bg-blue-500 border-2 border-transparent text-white py-4 px-6 hover:bg-transparent hover:text-blue-600 hover:border-2 hover:border-blue-500">Креирај</button>
+      <input type="text" className="border-none self-center hover:text-[#1d4ed8]" placeholder="username" style={{background: 'none', marginBottom: 0, paddingLeft: 1}} />
+      <button type="submit" className="bg-[#3b82f6] border-2 border-transparent text-white py-4 px-6 hover:bg-transparent hover:text-[#2563eb] hover:border-2 hover:border-[#3b82f6]">Креирај</button>
     </form>
   );
 }

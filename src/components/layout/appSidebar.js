@@ -12,16 +12,16 @@ export default function AppSidebar() {
   return (
     <nav className="inline-flex mx-auto items-start flex-col mt-8 gap-6">
       <Link href={'/account'} 
-      className={"flex gap-4 items-center cursor-pointer hover:text-blue-500" 
-        + (path === '/account' ? 'text-blue-500 font-bold items-center' : '')} >
+      className={"flex gap-4 items-center cursor-pointer hover:text-[#3b82f6]" 
+        + (path === '/account' ? 'text-[#3b82f6] font-bold items-center' : '')} >
         <FontAwesomeIcon 
           icon={faFileLines} 
           className="w-6 h-6" />
         <span>Профил</span>
       </Link>
       <Link href={'/analytics'} 
-        className={"flex gap-4 items-center cursor-pointer hover:text-blue-500" 
-        + (path === '/analytics' ? 'text-blue-500 font-bold items-center' : '')}>
+        className={"flex gap-4 items-center cursor-pointer hover:text-[#3b82f6]" 
+        + (path === '/analytics' ? 'text-[#3b82f6] font-bold items-center' : '')}>
         <FontAwesomeIcon 
           icon={faChartLine} 
           className="w-6 h-6" />
@@ -29,17 +29,17 @@ export default function AppSidebar() {
       </Link>
       <LogoutButton 
         iconLeft={true}
-        className={"flex gap-4 items-center cursor-pointer hover:text-blue-500"}
+        className={"flex gap-4 items-center cursor-pointer hover:text-[#3b82f6]"}
         iconClasses={'w-6 h-6'}
       />
-      <div className="absolute top-88 left-4 w-52 h-0.5 bg-gray-200 mt-6"></div>
-      <Link href={'/login'} className="flex items-center gap-2 text-xs uppercase text-gray-600 pt-7 cursor-pointer hover:text-blue-500">
+      <div className="absolute top-88 left-4 w-52 h-0.5 bg-[#e5e7eb] mt-6"></div>
+      <Link href={'/login'} className="flex items-center gap-2 text-xs uppercase text-[#4b5563] pt-7 cursor-pointer hover:text-[#3b82f6]">
         <FontAwesomeIcon 
           icon={faArrowLeft}
           className={"w-3 h-3"} />
         <span>Назад кон почетна</span>
       </Link>
-      <Link href={'/'} className="flex items-center gap-2 text-xs uppercase text-gray-600 cursor-pointer hover:text-blue-500">
+      <Link href={'/'} className="flex items-center gap-2 text-xs uppercase text-[#4b5563] cursor-pointer hover:text-[#3b82f6]">
         <FontAwesomeIcon 
           icon={faAddressCard}
           className={"w-3 h-3"} />

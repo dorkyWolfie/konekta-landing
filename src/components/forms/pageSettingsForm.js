@@ -3,15 +3,15 @@ import RadioTogglers from "@/components/formItems/radioTogglers";
 import Image from "next/image";
 import SubmitButton from "@/components/buttons/submitButton";
 import SectionBox from "@/components/layout/sectionBox";
-import { faBrush, faCloudArrowUp, faArrowRight, faSave } from "@fortawesome/free-solid-svg-icons";
-import { faImage } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { page } from "@/models/page";
 import { savePageSettings } from "@/actions/pageActions";
-import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { upload } from "@/libs/upload";
 import { useRouter } from 'next/navigation';
+import { toast } from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBrush, faCloudArrowUp, faArrowRight, faSave } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-regular-svg-icons";
 
 export default function PageSettingsForm({page, user}) {
   const router = useRouter();
@@ -45,7 +45,7 @@ export default function PageSettingsForm({page, user}) {
       <SectionBox>
         <form action={saveBaseSettings}>
           <div 
-            className="-m-4 bg-gray-300 min-h-[300px] flex items-center justify-center bg-cover bg-center"
+            className="-m-4 bg-[#d1d5db] min-h-[300px] flex items-center justify-center bg-cover bg-center"
             style={
               bgType === 'color'
                 ? {backgroundColor: bgColor}
@@ -61,8 +61,8 @@ export default function PageSettingsForm({page, user}) {
                 onChange={val => setBgType(val)}
               />
               {bgType === 'color' && (
-                <div className="bg-gray-100 shadow text-gray-700 p-2 mt-2">
-                  <div className="flex gap-2 justify-center hover:text-blue-600">
+                <div className="bg-[#f3f4f6] shadow text-[#374151] p-2 mt-2">
+                  <div className="flex gap-2 justify-center hover:text-[#2563eb]">
                     <span>Одбери боја за позадината</span>
                     <FontAwesomeIcon icon={faArrowRight} className="self-center" />
                     <input 
@@ -74,7 +74,7 @@ export default function PageSettingsForm({page, user}) {
               )}
               {bgType === 'image' && (
                 <div className="flex justify-center">
-                  <label className="bg-white shadow px-4 py-2 mt-2 flex gap-2 items-center cursor-pointer hover:text-blue-600">
+                  <label className="bg-white shadow px-4 py-2 mt-2 flex gap-2 items-center cursor-pointer hover:text-[#2563eb]">
                     <input type="hidden" name="bgImage" value={bgImage} />
                     <input
                       type="file" onChange={handleCoverImageChange}
@@ -93,7 +93,7 @@ export default function PageSettingsForm({page, user}) {
                 src={avatar} alt={'avatar'} width={128} height={128} />
               <label 
                 htmlFor="avatarIn" 
-                className="cursor-pointer absolute -bottom-0 -right-2 bg-white p-2 rounded-full shadow shadow-black/50 aspect-square flex items-center justify-center hover:text-blue-600">
+                className="cursor-pointer absolute -bottom-0 -right-2 bg-white p-2 rounded-full shadow shadow-black/50 aspect-square flex items-center justify-center hover:text-[#3b82f6]">
                 <FontAwesomeIcon size="lg" icon={faCloudArrowUp} />
               </label>
               <input 
@@ -106,8 +106,8 @@ export default function PageSettingsForm({page, user}) {
             <label className="input-label" htmlFor="nameIn">Име и презиме</label>
             <input 
               type="text" id="nameIn" name="displayName"
-              defaultValue={page.displayName} placeholder="Трајко Трајковски" />
-            <label className="input-label" htmlFor="companyIn">Име и презиме</label>
+              defaultValue={page.displayName} placeholder="Име и презиме" />
+            <label className="input-label" htmlFor="companyIn">Име на фирма</label>
             <input 
               type="text" id="companyIn" name="company"
               defaultValue={page.company} placeholder="Каде работиш?" />

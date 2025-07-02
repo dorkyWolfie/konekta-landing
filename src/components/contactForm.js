@@ -1,13 +1,13 @@
 export default function ContactForm() {
   return (
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4 w-xl">
       <div className="flex flex-col gap-4">
-        <div className="flex flex-row gap-4">
-          <div className="input-div">
+        <div className="flex flex-row gap-6 justify-between">
+          <div className="input-div w-1/2">
             <label>Име*</label>
             <input type="email" />
           </div>
-          <div className="input-div">
+          <div className="input-div w-1/2">
             <label>Презиме*</label>
             <input type="email" />
           </div>
@@ -20,8 +20,6 @@ export default function ContactForm() {
           <label>Телефонски број</label>
           <input type="email" />
         </div>
-
-
       </div>
       <button 
       className="button-1">

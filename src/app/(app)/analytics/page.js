@@ -8,7 +8,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import { format, formatISO9075, isToday } from "date-fns";
+import { isToday } from "date-fns";
 
 export default async function AnalyticsPage() {
   mongoose.connect(process.env.MONGO_URI);
@@ -32,7 +32,7 @@ export default async function AnalyticsPage() {
         _id: {
           $dateToString: {
             date: "$createdAt",
-            format: "%Y-%m-%d",
+            format: "%Y-%m-%d", // "%Y-%m-%d"
           },
         },
         count: { "$count": {} },
@@ -62,23 +62,23 @@ export default async function AnalyticsPage() {
       <SectionBox>
         <h2 className="text-xl mb-6 font-bold text-center">Кликови</h2>
         {Page.links.map(link => (
-          <div key={link.url} className="flex gap-6 items-center justify-center border-t border-gray-200 py-4">
-            <div className="text-blue-500 pl-4">
+          <div key={link.url} className="flex gap-6 items-center justify-center border-t border-[#e5e7eb] py-4">
+            <div className="text-[#3b82f6] pl-4">
               <FontAwesomeIcon icon={faLink} />
             </div>
             <div className="grow">
               <h3>{link.title || 'Нема наслов'}</h3>
-              <p className="text-gray-500 text-sm">{link.subtitle || 'Нема поднаслов'}</p>
-              <a target="_blank" href={link.url} className="text-blue-700 text-xs">{link.url}</a>
+              <p className="text-[#6b7280] text-sm">{link.subtitle || 'Нема поднаслов'}</p>
+              <a target="_blank" href={link.url} className="text-[#1d4ed8] text-xs">{link.url}</a>
             </div>
             <div className="text-center flex items-center justify-center gap-4">
               <div className="flex flex-col gap-2">
                 <span className="text-xl">{clicks.filter(c => c.uri === link.url && isToday(c.createdAt)).length}</span>
-                <span className="text-gray-400 text-xs uppercase font-bold">Денес:</span>
+                <span className="text-[#9ca3af] text-xs uppercase font-bold">Денес:</span>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="text-xl">{clicks.filter(c => c.uri === link.url).length}</span>
-                <span className="text-gray-400 text-xs uppercase font-bold">Вкупно:</span>
+                <span className="text-[#9ca3af] text-xs uppercase font-bold">Вкупно:</span>
               </div>
             </div>
           </div>

@@ -1,161 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  --color-black: #242323;
-  --color-white: #fdfdff;
-  /* @apply bg-sky-50/50 text-black */
-  color: var(--color-black);
-  background: rgba(240, 249, 255, .6);
-  font-weight: 500;
-}
-
-h1 {
-  @apply text-5xl font-[800] ;
-}
-
-h2 {
-  @apply text-xl font-bold tracking-wide;
-}
-
-h4 {
-  @apply font-[700]
-}
-
-strong {
-  @apply font-[800];
-}
-
-footer {
-  margin-top: auto;
-  margin-bottom: 5px;
-  background: transparent;
-}
-
-/* MAX WIDTH ON THE SECTIONS & HORIZONTAL PADDING */
-.section {
-  @apply max-w-6xl m-auto px-10;
-}
-
-/* SPACE BETWEEN SECTIONS */
-.sgap {
-  @apply py-20;
-}
-
-/* VERTICAL SECTIONS - BC THERE ARE MANY */
-.section-col {
-  @apply flex flex-col gap-6 items-center;
-}
-
-/* DIV THAT CONTAINS IMG AND P */
-.div-img {
-  @apply flex flex-row items-center justify-between gap-5;
-}
-
-.div-text {
-  @apply w-3/5 flex flex-col gap-6;
-}
-
-/* BUTTONS */
-.button-1 {
-  @apply py-3 px-6 text-base font-[700] text-white border-2 hover:bg-transparent hover:text-blue-600 transition-all;
-  background: #2B7FFF;
-  border-color: #2B7FFF;
-}
-
-.button-2 {
-  @apply py-3 px-6 text-base font-[700] transition-all;
-  border: 2px solid #2B7FFF;
-  color: #2563eb;
-}
-
-.button-2:hover {
-  background: #2B7FFF;
-  color: #fff;
-  transition: all;
-}
-
-input[type="text"], textarea {
-  @apply bg-gray-200/60 w-full block py-2 px-2 mb-2 border border-transparent;
-}
-
-input[type="text"]:hover, textarea:hover {
-  @apply border border-blue-600;
-}
-
-label.input-label {
-  @apply uppercase text-gray-500 text-xs;
-}
-
-.radio-togglers {
-  @apply p-1 bg-gray-200 inline-flex;
-}
-
-.radio-togglers div {
-  @apply p-2 px-4 text-gray-500 block flex items-center gap-2 cursor-pointer;
-}
-
-.radio-togglers input[type="radio"] {
-  @apply hidden;
-}
-
-.radio-togglers input[type="radio"]:hover + div {
-  @apply text-blue-600;
-}
-
-.radio-togglers input[type="radio"]:checked + div {
-  @apply bg-white text-blue-600;
-}
-
-.sortable-ghost {
-  opacity: .2;
-}
-
-.corner-border {
-  @apply py-2 px-4 border-2 border-gray-400/70;
-  --s: 15px; /* the size on the corner */
-  -webkit-mask:
-  conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
-  0 0/calc(100% - var(--s)) calc(100% - var(--s)),
-  linear-gradient(#000 0 0) content-box;
-}
-
-/* A BOX SIMILAR TO THE ONE ABOVE, WITH FULL BORDER */
-.box-border {
-  @apply flex flex-col items-start w-100 border border-gray-300/60 p-4 gap-2;
-}
-
-.box-border h4 {
-  @apply text-sm font-bold;
-}
-
-.box-border p {
-  @apply text-sm text-gray-700/90;
-}
-
-/* CONTACT FORM */
-.input-div {
-  @apply flex flex-col gap-0;
-} 
-
-input {
-  @apply border-b-2 border-gray-300 outline-none p-1;
-}
-
-label {
-  @apply text-sm font-bold text-gray-600;
-}
-
-input:hover,
-input:focus {
-  @apply border-blue-500;
-}
-
+/* SHADCN UI START */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -228,90 +74,133 @@ input:focus {
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
+/* SHADCN UI END */
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  --color-black: #242323;
+  --color-white: #fdfdff;
+  color: var(--color-black);
+  background: rgba(240, 249, 255, 1);
+  font-weight: 500;
+  overflow-x: hidden;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+h1 {
+  @apply text-5xl font-[800] ;
 }
 
-.wrapper {
-  z-index: -1;
-  width: 100%;
-  height: 500px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 5px;
-  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-  overflow: hidden;
+h2 {
+  @apply text-xl font-bold tracking-wide;
 }
 
-.wave {
-  width: 100%;
-  height: 1024px;
-  position: absolute;
-  top: -25%;
-  left: 25%;
-  margin-left: -500px;
-  margin-top: -500px;
-  border-radius: 35%;
-  background: rgba(255, 255, 255, .75);
-  animation: wave 15s infinite linear;
+h4 {
+  @apply font-[700]
 }
 
-@keyframes wave {
-  from {
-    transform: rotate(0deg);
-  }
-  from {
-    transform: rotate(360deg);
-  }
+strong {
+  @apply font-[800];
 }
 
-#wave_copy {
-  width: 100%;
-  height: 1024px;
-  position: absolute;
-  top: -25%;
-  left: 25%;
+footer {
+  margin-top: auto;
+  margin-bottom: 5px;
+  background: transparent;
+}
 
+/* MAX WIDTH ON THE SECTIONS & HORIZONTAL PADDING */
+.section {
+  @apply max-w-6xl m-auto px-10;
+}
+
+/* BUTTONS */
+.button-1 {
+  @apply py-3 px-6 text-base font-[700] text-white border-2 border-[#2B7FFF] hover:bg-transparent hover:text-[#2563eb] bg-[#2B7FFF] transition-all;
+}
+
+.button-2 {
+  @apply py-3 px-6 text-base font-[700] border-2 border-[#2B7FFF] text-[#2563eb] hover:bg-[#2B7FFF] hover:text-white transition-all;
+}
+
+input[type="text"], textarea {
+  @apply border-b border-[#e5e7eb] w-full block py-2 px-2 mb-2;
+}
+
+input[type="text"]:hover, textarea:hover {
+  @apply border-b border-[#2563eb];
+}
+
+label.input-label {
+  @apply uppercase text-[#6b7280] text-xs;
+}
+
+.radio-togglers {
+  @apply p-1 bg-[#e5e7eb] inline-flex;
+}
+
+.radio-togglers div {
+  @apply p-2 px-4 text-[#6b7280] block flex items-center gap-2 cursor-pointer;
+}
+
+.radio-togglers input[type="radio"] {
+  @apply hidden;
+}
+
+.radio-togglers input[type="radio"]:hover + div {
+  @apply text-[#2563eb];
+}
+
+.radio-togglers input[type="radio"]:checked + div {
+  @apply bg-white text-[#2563eb];
+}
+
+/* SMALL OPACITY ON THE OVERLAY OF DRAGGED ELEMENT */
+.sortable-ghost {
+  opacity: .2;
+}
+
+.corner-border {
+  @apply py-2 px-4 border-2 border-[#9ca3af]/70;
+  --s: 15px; /* the size on the corner */
+  -webkit-mask:
+  conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+  0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+  linear-gradient(#000 0 0) content-box;
+}
+
+/* A BOX SIMILAR TO THE ONE ABOVE, WITH FULL BORDER */
+.box-border {
+  @apply flex border border-[#d1d5db];
+}
+
+.box-border h4 {
+  @apply text-sm font-bold;
+}
+
+.box-border p {
+  @apply text-sm;
+}
+
+/* CONTACT FORM */
+.input-div {
+  @apply flex flex-col gap-0;
+} 
+
+.input-div input {
+  @apply border-b-2 border-[#d1d5db] p-1;
+}
+
+.input-div label {
+  @apply text-sm font-bold text-[#4b5563];
+}
+
+.input-div input:hover,
+.input-div input:focus {
+  @apply border-[#3b82f6];
+}
+
+input {
+  @apply outline-none;
 }

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${PageData.displayName} | Конекта`,
-    description: PageData.bio || "1 допир, 1000 можности",
+    description: PageData.bio || "Твојата дигитална прва импресија",
     robots: {
       index: false,
       follow: false,
@@ -35,8 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="mk">
       <head>
-        <meta name="robots" content="noindex,nofollow" />
-
+        <meta name="robots" content="noindex, nofollow" />
       </head>
       <body>
         <main>

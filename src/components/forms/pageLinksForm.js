@@ -69,7 +69,7 @@ function removeLink(linkKeyToRemove) {
         <h2 className="text-2xl font-bold mb-4">Линкови</h2>
         <button 
           onClick={addNewLink} type="button" 
-          className="text-blue-500 text-lg flex gap-2 items-center cursor-pointer">
+          className="text-[#3b82f6] text-lg flex gap-2 items-center cursor-pointer">
           <FontAwesomeIcon icon={faPlus} />
           <span>Внеси нов линк</span>
         </button>
@@ -79,7 +79,7 @@ function removeLink(linkKeyToRemove) {
               <div key={l.key} className="mt-8 flex gap-2 items-center sm:flex-nowrap flex-wrap justify-center">
                 <div className="mt-8 flex gap-2 items-center">
                   <div className="handle py-2 cursor-grab">
-                    <FontAwesomeIcon icon={faGripLines} className="text-gray-500  hover:text-blue-400" />
+                    <FontAwesomeIcon icon={faGripLines} className="text-[#6b7280]  hover:text-[#60a5fa]" />
                   </div>
                   <div className="text-center flex flex-col items-center gap-2 text-sm">
                     <div className="aspect-square max-w-[50px]">
@@ -97,14 +97,14 @@ function removeLink(linkKeyToRemove) {
                         type="file" className="hidden" />
                       <label 
                         htmlFor={'icon'+l.key}
-                        className="py-2 px-6 flex items-center gap-1 border border-gray-200 hover:text-blue-600 cursor-pointer">
+                        className="py-2 px-6 flex items-center gap-1 border border-[#e5e7eb] hover:text-[#2563eb] cursor-pointer">
                         <FontAwesomeIcon icon={faCloudArrowUp} />
                         <span>Промени икона</span>
                       </label>
                     </div>
                     <button 
                       type="button" onClick={() => removeLink(l.key)}
-                      className="p-2 px-4 flex items-center gap-1 bg-gray-200 text-red-500 cursor-pointer hover:text-red-700">
+                      className="p-2 px-4 flex items-center gap-1 text-[#ef4444] cursor-pointer hover:text-[#b91c1c]">
                       <FontAwesomeIcon icon={faTrash} />
                       <span>Избриши го линкот</span>
                     </button>

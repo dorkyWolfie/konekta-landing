@@ -7,7 +7,7 @@ export default function LoginGoogle() {
     return (
         <button 
         onClick={() => signIn('google', { callbackUrl: '/account' })}
-        className="bg-white shadow-sm shadow-gray-700/20 text-center w-full py-4 flex gap-3 items-center justify-center hover:bg-blue-500 hover:text-white">
+        className="bg-white shadow-sm shadow-[#4b5563]-60 text-center w-full py-4 flex gap-3 items-center justify-center hover:bg-[#3b82f6] hover:text-white">
                 <FontAwesomeIcon icon={faGoogle} className="h-6" />
                 <span>Најава со Google</span>
             </button>
