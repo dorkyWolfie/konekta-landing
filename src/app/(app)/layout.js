@@ -34,8 +34,14 @@ export async function generateMetadata() {
 export default function RootLayout({ children }) {
   return (
     <html lang="mk">
-      <head><meta name="robots" content="noindex,nofollow" /></head>
-      <body>{children}</body>
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+      </head>
+      <body>
+        {children}
+      </body>
     </html>
   )
 }

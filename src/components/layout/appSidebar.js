@@ -1,9 +1,9 @@
 'use client';
 import Link from "next/link";
+import LogoutButton from "@/components/buttons/logoutButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faFileLines, faAddressCard } from "@fortawesome/free-regular-svg-icons";
-import LogoutButton from "@/components/buttons/logoutButton";
 import { usePathname } from "next/navigation";
 
 export default function AppSidebar() {

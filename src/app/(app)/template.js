@@ -16,6 +16,11 @@ import { faArrowUpRightFromSquare, faBars } from "@fortawesome/free-solid-svg-ic
 export const metadata = {
   title: "Конекта",
   description: "Твојата дигитална прва импресија",
+  robots: {
+        index: false,
+        follow: false,
+        nocache: true,
+      },
 };
 
 export default async function AppTemplate({ children, ...rest }) {
@@ -31,14 +36,16 @@ export default async function AppTemplate({ children, ...rest }) {
     <html lang="mk">
       <head>
         <meta name="robots" content="noindex,nofollow" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
       </head>
       <body className="overflow-x-hidden">
         <Toaster />
         <main className="flex min-h-screen">
           <aside id="sidebar" className="bg-white min-w-60 top-0 left-0 bottom-0 md:block justify-center hidden z-20 transition-all">
             <div className="sticky top-0 p-4 pt-8 flex flex-col items-center">
-              <div className="rounded-full overflow-hidden aspect-square w-24 mx-auto">
-                <Image src={session.user.image} width={256} height={256} alt={"avatar"} />
+              <div className="rounded-full overflow-hidden aspect-square w-24 m-auto">
+                <Image src={session.user.image} width={256} height={256} alt={"avatar objcet-cover"} />
               </div>
               {Page && (
                 <Link 
@@ -56,9 +63,9 @@ export default async function AppTemplate({ children, ...rest }) {
             </div>
           </aside>
           <div className="grow">
-            <button onClick={openMenu} className="md:hidden block absolute top-8 right-8 bg-[#3b82f6] text-white py-2 px-3">
-            <FontAwesomeIcon icon={faBars} size="lg" />
-          </button>
+            <button onClick={openMenu} className="md:hidden block absolute top-8 right-8 bg-[#3b82f6] text-white py-2 px-3 shadow-md">
+              <FontAwesomeIcon icon={faBars} size="lg" />
+            </button>
             {children}
           </div>
         </main>

@@ -88,8 +88,13 @@ body {
   overflow-x: hidden;
 }
 
+section {
+  @apply p-10 mx-auto;
+}
+
+/* ---- TEXT START ---- */
 h1 {
-  @apply text-5xl font-[800] ;
+  @apply font-[800] ;
 }
 
 h2 {
@@ -104,26 +109,28 @@ strong {
   @apply font-[800];
 }
 
+.p {
+  @apply text-sm font-[400];
+}
+/* ---- TEXT END ---- */
+
 footer {
   margin-top: auto;
   margin-bottom: 5px;
   background: transparent;
 }
 
-/* MAX WIDTH ON THE SECTIONS & HORIZONTAL PADDING */
-.section {
-  @apply max-w-6xl m-auto px-10;
-}
-
-/* BUTTONS */
+/* ---- BUTTONS START ---- */
 .button-1 {
-  @apply py-3 px-6 text-base font-[700] text-white border-2 border-[#2B7FFF] hover:bg-transparent hover:text-[#2563eb] bg-[#2B7FFF] transition-all;
+  @apply bg-[#3b82f6] text-white font-[700] py-2 px-4 hover:bg-[#1d4ed8] transition-all cursor-pointer;
 }
 
 .button-2 {
-  @apply py-3 px-6 text-base font-[700] border-2 border-[#2B7FFF] text-[#2563eb] hover:bg-[#2B7FFF] hover:text-white transition-all;
+  @apply border-2 border-[#3b82f6] text-[#3b82f6] font-[700] py-2 px-4 hover:bg-[#3b82f6] hover:text-white transition-all cursor-pointer;
 }
+/* ---- BUTTONS END ---- */
 
+/* ---- INPUTS & FORMS START ---- */
 input[type="text"], textarea {
   @apply border-b border-[#e5e7eb] w-full block py-2 px-2 mb-2;
 }
@@ -155,12 +162,14 @@ label.input-label {
 .radio-togglers input[type="radio"]:checked + div {
   @apply bg-white text-[#2563eb];
 }
+/* ---- INPUTS & FORMS END ---- */
 
-/* SMALL OPACITY ON THE OVERLAY OF DRAGGED ELEMENT */
+/* ---- SMALL OPACITY ON THE OVERLAY OF DRAGGED ELEMENT ---- */
 .sortable-ghost {
   opacity: .2;
 }
 
+/* ---- SMALL BOX WITH ANGLE BORDERS ---- */
 .corner-border {
   @apply py-2 px-4 border-2 border-[#9ca3af]/70;
   --s: 15px; /* the size on the corner */
@@ -170,25 +179,32 @@ label.input-label {
   linear-gradient(#000 0 0) content-box;
 }
 
-/* A BOX SIMILAR TO THE ONE ABOVE, WITH FULL BORDER */
-.box-border {
-  @apply flex border border-[#d1d5db];
+/* ---- WHITE BOX ---- */
+.box-border-2 {
+  @apply flex text-white shadow-sm shadow-gray-800/70;
 }
 
-.box-border h4 {
+.box-border {
+  @apply flex bg-white shadow;
+}
+
+.box-border h4,
+.box-border-2 h4 {
   @apply text-sm font-bold;
 }
 
-.box-border p {
+.box-border p,
+.box-border-2 p {
   @apply text-sm;
 }
 
-/* CONTACT FORM */
+/* ---- CONTACT FORM START ---- */
 .input-div {
   @apply flex flex-col gap-0;
 } 
 
-.input-div input {
+.input-div input,
+.input-div textarea {
   @apply border-b-2 border-[#d1d5db] p-1;
 }
 
@@ -197,10 +213,26 @@ label.input-label {
 }
 
 .input-div input:hover,
-.input-div input:focus {
-  @apply border-[#3b82f6];
+.input-div input:focus,
+.input-div textarea:hover,
+.input-div textarea:focus {
+  @apply border-b-2 border-[#3b82f6];
 }
 
-input {
+input,
+textarea {
   @apply outline-none;
 }
+/* ---- CONTACT FORM END ---- */
+
+/* ---- WAVE BG START ---- */
+.custom-shape-divider-top {
+  @apply absolute -top-1 left-0 right-0 w-full fill-[#F0F9FF] overflow-x-hidden;
+}
+
+.custom-shape-divider-top svg {
+  display: block;
+  width: calc(117% + 1.3px);
+  height: 130px;
+}
+/* ---- WAVE BG END ---- */

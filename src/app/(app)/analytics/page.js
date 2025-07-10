@@ -1,8 +1,10 @@
 import SectionBox from "@/components/layout/sectionBox";
 import mongoose from "mongoose";
 import Chart from "@/components/chart";
+import Link from "next/link";
 import { event } from "@/models/event";
 import { page } from "@/models/page";
+import { user } from "@/models/user";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
@@ -18,6 +20,7 @@ export default async function AnalyticsPage() {
     return redirect('/');
   }
 
+  const User = await user.findOne({ email: session.user.email }).lean();
   const Page = await page.findOne({owner: session?.user?.email});
   
   const groupedViews = await event.aggregate([
@@ -49,6 +52,15 @@ export default async function AnalyticsPage() {
     page: Page.uri,
     type: 'click',
   });
+
+  if (!User || User.subscriptionStatus !== 'pro') {
+    return (
+      <SectionBox>
+        <h2>Аналитика не е достапна на обичниот план</h2>
+        <p>Доколку сакате да го надградите профилот <Link href="/upgrade">кликнете тука</Link></p>
+      </SectionBox>
+    ) // or show an upgrade message
+  }
 
   return (
     <div>

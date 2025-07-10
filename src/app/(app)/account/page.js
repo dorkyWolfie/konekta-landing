@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 import UsernameForm from "@/components/forms/UsernameForm";
 import PageSettingsForm from "@/components/forms/pageSettingsForm";
 import PageButtonsForm from "@/components/forms/pageButtonsForm";
+import PageLinksForm from "@/components/forms/pageLinksForm";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { page } from "@/models/page";
-import PageLinksForm from "@/components/forms/pageLinksForm";
-
+import { user } from "@/models/user";
 
 export default async function AccountPage({ searchParams }) {
     const session = await getServerSession(authOptions);
@@ -20,14 +20,19 @@ export default async function AccountPage({ searchParams }) {
     }
 
     mongoose.connect(process.env.MONGO_URI);
+    const User = await user.findOne({ email: session?.user?.email }).lean();
     const accPage = await page.findOne({owner: session?.user?.email});
+
     if (accPage) {
         const plainPage = JSON.parse(JSON.stringify(accPage));
         return (
             <>
                 <PageSettingsForm page={plainPage} user={session.user} />
                 <PageButtonsForm page={plainPage} user={session.user} />
-                <PageLinksForm page={plainPage} user={session.user} />
+
+                {User.subscriptionStatus === 'pro' && (
+                    <PageLinksForm page={plainPage} user={session.user} />
+                )}
             </>
         )
     }

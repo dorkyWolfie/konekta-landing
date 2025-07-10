@@ -36,12 +36,11 @@ export default function RootLayout({ children }) {
     <html lang="mk">
       <head>
         <meta name="robots" content="noindex, nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
       </head>
       <body>
-        <main>
           {children}
-        </main>
-        <Footer />
       </body>
     </html>
   );
