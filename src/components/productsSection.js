@@ -63,7 +63,15 @@ export default function ProductSection({ proizvodi }) {
           </button>
           <h2 className="text-xl font-bold mb-2">{selectedProduct.name}</h2>
           <Image src={selectedProduct.image} alt={selectedProduct.name} width={200} height={200}className="mx-auto mb-4" />
-          <p>{selectedProduct.description || 'Нема опис за овој производ.'}</p>
+          <h3 className="font-[700] pt-2">Опис:</h3>
+          <p>{selectedProduct.description}</p>
+          <h3 className="font-[700] pt-2">Карактеристики:</h3>
+          <ul className="list-disc pl-5">
+            {selectedProduct.features?.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
+          <h3 className="font-[700] pt-2">Цена: {selectedProduct.price}</h3>
         </PopUp>
       )}
       {/* ---- CONTACT FORM POPUP ---- */}

@@ -4,15 +4,15 @@ import ContactForm from "@/components/forms/contactForms/contactForm";
 import PriceSlider from "@/components/priceSlider";
 import ReviewCarousel from "@/components/reviewCarousel";
 import ProductSection from "@/components/productsSection";
+import PopUp from "@/components/layout/popup";
 import Link from "next/link";
 import { forWho } from "@/components/listItems";
 import { features } from "@/components/listItems";
 import { proizvodi } from "@/components/listItems";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt, faLock, faRepeat, faClose } from "@fortawesome/free-solid-svg-icons";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
-import PopUp from "@/components/layout/popup";
 
 
 export default function Home() {

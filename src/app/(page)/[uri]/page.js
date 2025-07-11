@@ -79,7 +79,7 @@ export default async function UserPage({params}) {
           {Object.keys(Page.buttons).map(buttonKey => (
             <Link
               key={buttonKey} target="_blank"
-              href={buttonLink(buttonKey, Page.buttons[buttonKey])} className="rounded-full bg-[#d1d5db]/60  p-3 text-center">
+              href={buttonLink(buttonKey, Page.buttons[buttonKey])} className="rounded-full bg-white/60 shadow-sm p-3 text-center">
               <FontAwesomeIcon icon={icons[buttonKey]} className="w-5 h-5" />
             </Link>
           ))}
@@ -89,7 +89,7 @@ export default async function UserPage({params}) {
             <Link 
               key={link.url} 
               ping={process.env.URL+'/api/click?url='+btoa(link.url)+'&page='+Page.uri}
-              target="_blank" href={'https://'+link.url} className="bg-[#d1d5db]/60 p-2 flex gap-4 items-center" >
+              target="_blank" href={'https://'+link.url} className="bg-white/60 shadow-sm p-2 flex gap-4 items-center" >
               <div className="corner-border aspect-square w-15 h-15 p-2 flex justify-center items-center">
                 {link.icon && (
                   <Image src={link.icon} alt={'icon'} width={256} height={256} className="w-20 h-20 object-contain" />
