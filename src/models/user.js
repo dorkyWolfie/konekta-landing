@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   email: String,
   image: String,
   emailVerified: Date,
-  subscriptionStatus: { type: String, enum: ['basic', 'pro'], default: 'pro'},
+  subscriptionStatus: { type: String, enum: ['basic', 'pro'], default: 'basic'},
   subscriptionExpiresAt: { type: Date },
 });
 
