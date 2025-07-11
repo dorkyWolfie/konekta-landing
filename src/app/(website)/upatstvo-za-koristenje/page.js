@@ -41,16 +41,16 @@ export default function NacinNaKoristenje() {
         <h3 className="font-[800]">Копирање на линкот</h3>
         <ul className="list-disc pl-5">
           <li>Отворете го линкот од NFC токенот</li>
-          <li>Кликнете и задржете на лентата за адресата, и одберете "Copy" (копирај).</li>
+          <li>Кликнете и задржете на лентата за адресата, и одберете &quot;Copy&quot; (копирај).</li>
         </ul>
         <h3 className="font-[800] pt-2">Споделување на линкот</h3>
         <ul className="list-disc pl-5">
           <h4>Преку порака:</h4>
           <li>Отворете ја саканата апликација за праќање пораки</li>
-          <li>Кликнете и задржете на лентата за пишување, и одберете "Paste" (Залепи), па потоа испратете</li>
+          <li>Кликнете и задржете на лентата за пишување, и одберете &quot;Paste&quot; (Залепи), па потоа испратете</li>
           <h4 className="pt-2">Преку AirDrop / Nearby Share</h4>
-          <li>Android: Отворете "Share" (Сподели) - одберете "Nearby Share" - одберете уред</li>
-          <li>iPhone: Отворете "Share" (Сподели) - одберете "AirDrop" - одберете контакт</li>
+          <li>Android: Отворете &quot;Share&quot; (Сподели) - одберете &quot;Nearby Share&quot; - одберете уред</li>
+          <li>iPhone: Отворете &quot;Share&quot; (Сподели) - одберете &quot;AirDrop&quot; - одберете контакт</li>
         </ul>
       </section>
       <section className="max-w-4xl flex flex-col gap-2">
