@@ -108,7 +108,7 @@ export default async function UserPage({params}) {
         </div>
       </div>
       <div className="relative">
-        <SaveContact uri={Page.uri} className="button-1 shadow fixed absolute z-10 top-5 right-5" />
+        <SaveContact uri={Page.uri} className="button-1 shadow text-sm fixed absolute z-10 top-4 right-4" />
       </div>
     </main>
   )

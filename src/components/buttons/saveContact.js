@@ -1,5 +1,8 @@
 'use client';
 
+import { faCloudArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function SaveContact({ uri, className='' }) {
   const downloadVCard = async () => {
     const res = await fetch(`/api/vcard?uri=${uri}`);
@@ -19,7 +22,8 @@ export default function SaveContact({ uri, className='' }) {
 
   return (
     <button onClick={downloadVCard} className={className}>
-      Превземи<br />контакт
+      <FontAwesomeIcon icon={faCloudArrowDown} className="w-6 h-6 pr-2" />
+      <span>Превземи контакт</span>
     </button>
   );
 }

@@ -1,6 +1,8 @@
-import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
+import fetch from 'node-fetch';
+import { NextResponse } from 'next/server';
 import { page } from '@/models/page';
+import { user } from '@/models/user';
 
 function cyrillicToLatin(text) {
   const map = {
@@ -40,6 +42,14 @@ function cyrillicToLatin(text) {
   return text.split('').map(char => map[char] || char).join('');
 }
 
+async function getBase64Image(imageUrl) {
+  const response = await fetch(imageUrl);
+  const buffer = await response.arrayBuffer();
+  const mimeType = response.headers.get("content-type") || "image/jpeg";
+  const base64 = Buffer.from(buffer).toString('base64');
+  return `PHOTO;ENCODING=b;TYPE=${mimeType.split('/')[1].toUpperCase()}:${base64}`;
+}
+
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const uri = searchParams.get('uri');
@@ -50,6 +60,8 @@ export async function GET(req) {
 
   await mongoose.connect(process.env.MONGO_URI);
   const Page = await page.findOne({ uri });
+  const User = await user.findOne({ email: Page.owner });
+
   if (!Page) {
     return new NextResponse('Page not found', { status: 404 });
   }
@@ -59,19 +71,29 @@ export async function GET(req) {
   const positionLatin = cyrillicToLatin(Page.position);
 
   const lines = [
-  'BEGIN:VCARD',
-  'VERSION:3.0',
-  `N:${displayNameLatin.split(' ').reverse().join(';')}`,
-  `FN:${displayNameLatin}`,
-  companyLatin ? `ORG:${companyLatin}` : '',
-  positionLatin ? `TITLE:${positionLatin}` : '',
-  Page.buttons?.phone ? `TEL;TYPE=CELL:${Page.buttons.phone}` : '',
-  Page.buttons?.email ? `EMAIL:${Page.buttons.email}` : '',
-  Page.buttons?.website ? `URL:${Page.buttons.website}` : '',
-  'END:VCARD',
-];
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    `N:${displayNameLatin.split(' ').reverse().join(';')}`,
+    `FN:${displayNameLatin}`,
+    companyLatin ? `ORG:${companyLatin}` : '',
+    positionLatin ? `TITLE:${positionLatin}` : '',
+    Page.buttons?.phone ? `TEL;TYPE=CELL:${Page.buttons.phone}` : '',
+    Page.buttons?.email ? `EMAIL:${Page.buttons.email}` : '',
+    `URL:https://konekta.mk/${uri}`,
+  ];
 
-const vCardString = lines.filter(Boolean).join('\r\n');
+  if (User.image) {
+    try {
+      const photoLine = await getBase64Image(User.image);
+      lines.push(photoLine);
+    } catch (e) {
+      console.warn("Image fetch failed:", e);
+    }
+  }
+
+  lines.push('END:VCARD');
+
+  const vCardString = lines.filter(Boolean).join('\r\n');
 
   return new NextResponse(vCardString, {
     status: 200,
