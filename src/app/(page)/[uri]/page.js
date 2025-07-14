@@ -7,6 +7,8 @@ import { event } from "@/models/event";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faLocationDot, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faWhatsapp, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import DownloadVCardButton from "@/components/buttons/saveContact";
+import SaveContact from "@/components/buttons/saveContact";
 
 const icons = {
   email: faEnvelope,
@@ -105,6 +107,9 @@ export default async function UserPage({params}) {
             </Link>
           ))}
         </div>
+      </div>
+      <div className="relative">
+        <SaveContact uri={Page.uri} className="button-1 shadow fixed absolute z-10 top-5 right-5" />
       </div>
     </main>
   )
