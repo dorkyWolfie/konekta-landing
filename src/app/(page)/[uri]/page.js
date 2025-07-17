@@ -6,7 +6,7 @@ import { page } from "@/models/page";
 import { user } from "@/models/user";
 import { event } from "@/models/event";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faLocationDot, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faLocationDot, faPhone, faEnvelope, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faWhatsapp, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const icons = {
@@ -64,34 +64,40 @@ export default async function UserPage({params}) {
         src={User.image} alt={"avatar"} 
         width={150} height={150} 
         className="rounded-full aspect-square -mt-16 mx-auto border-6 bg-white border-white" />
-      <div className="max-w-2xl mx-auto px-4">
+      <div className="max-w-2xl mx-auto px-4 pb-10">
         <div className="flex flex-col items-center mt-4">
           <h2 className="text-2xl font-bold">{Page.displayName}</h2>
-          <h3 className="flex flex-row gap-1 mt-1 text-[#374151] text-sm">
-            {Page.company && (<span>{Page.company} •</span>)}
+          <h3 className="flex flex-row items-center gap-2 mt-1 text-[#374151] text-sm">
+            {Page.company && (
+              <span className="flex flex-row items-center gap-2 mt-1 mb-1 text-[#374151] text-sm">
+                <FontAwesomeIcon icon={faBriefcase} width={10} />
+                {Page.company}
+                <span>•</span>
+              </span>
+            )}
             <span>{Page.position}</span>
           </h3>
           <h3 className="flex flex-row gap-2 mt-1 mb-1 text-[#374151] text-sm">
-            {Page.location && (<span className="flex flex-row gap-2 mt-1 mb-1 text-[#374151] text-sm"><FontAwesomeIcon icon={faLocationDot} width={10} /> {Page.location}</span>)}
+            {Page.location && (<span className="flex flex-row items-center gap-2 mt-1 mb-1 text-[#374151] text-sm"><FontAwesomeIcon icon={faLocationDot} width={10} /> {Page.location}</span>)}
           </h3>
-          <p className="max-w-md mx-auto text-start text-[#1f2937] text-md">{Page.bio}</p>
+          <p className="max-w-md mx-auto text-center text-[#1f2937] text-md">{Page.bio}</p>
         </div>
         <div className="my-4 flex flex-row flex-wrap justify-center items-center gap-4">
           {Object.keys(Page.buttons).map(buttonKey => (
             <Link
               key={buttonKey} target="_blank"
-              href={buttonLink(buttonKey, Page.buttons[buttonKey])} className="rounded-full bg-white/60 shadow-sm p-3 text-center">
-              <FontAwesomeIcon icon={icons[buttonKey]} className="w-5 h-5" />
+              href={buttonLink(buttonKey, Page.buttons[buttonKey])} className="aspect-square rounded-full bg-white/75 shadow-sm p-3 text-center">
+              <FontAwesomeIcon icon={icons[buttonKey]} className="w-6 h-6" />
             </Link>
           ))}
         </div>
-        <div className="grid md:grid-cols-2 gap-4 mb-6">
+        <div className="grid md:grid-cols-2 gap-4">
           {Page.links.map(link => (
             <Link 
               key={link.url} 
               ping={process.env.URL+'/api/click?url='+btoa(link.url)+'&page='+Page.uri}
-              target="_blank" href={'https://'+link.url} className="bg-white/60 shadow-sm p-2 flex gap-4 items-center" >
-              <div className="corner-border aspect-square w-15 h-15 p-2 flex justify-center items-center">
+              target="_blank" href={'https://'+link.url} className="bg-white/75 shadow-sm p-2 flex gap-4 items-center" >
+              <div className="corner-border !border-[rgba(100,100,100,0.25)] aspect-square w-15 h-15 p-2 flex justify-center items-center">
                 {link.icon && (
                   <Image src={link.icon} alt={'icon'} width={256} height={256} className="w-20 h-20 object-contain" />
                 )}
@@ -108,7 +114,7 @@ export default async function UserPage({params}) {
         </div>
       </div>
       <div className="relative">
-        <SaveContact uri={Page.uri} className="button-1 shadow text-sm fixed absolute z-10 top-4 right-4" />
+        <SaveContact uri={Page.uri} className="button-1 shadow text-sm fixed absolute z-10 bottom-2 left-[50%] transform -translate-x-[50%]" />
       </div>
     </main>
   )

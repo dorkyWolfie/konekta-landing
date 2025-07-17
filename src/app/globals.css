@@ -81,9 +81,9 @@ body {
   display: flex;
   flex-direction: column;
   --color-black: #242323;
-  --color-white: #fdfdff;
+  --color-white: #FDFDFF;
   color: var(--color-black);
-  background: rgba(240, 249, 255, 1);
+  background: #F0F9FF;
   font-weight: 500;
   overflow-x: hidden;
 }

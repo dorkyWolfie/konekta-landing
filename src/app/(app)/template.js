@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { page } from "@/models/page";
-import { openMenu } from "@/components/mobMenu";
+import { openAside } from "@/components/mobMenu";
 import { Toaster } from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -63,7 +63,7 @@ export default async function AppTemplate({ children, ...rest }) {
             </div>
           </aside>
           <div className="grow">
-            <button onClick={openMenu} className="md:hidden block absolute top-8 right-8 bg-[#3b82f6] text-white py-2 px-3 shadow-md">
+            <button onClick={openAside} className="md:hidden block absolute top-8 right-8 bg-[#3b82f6] text-white py-2 px-3 shadow-md">
               <FontAwesomeIcon icon={faBars} size="lg" />
             </button>
             {children}

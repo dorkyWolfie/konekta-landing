@@ -31,7 +31,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   return (
     <html lang="mk">
       <head>
