@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 // OPEN MOBILE SIDEBAR (ASIDE)
-export function openMenu() {
+export function openAside() {
   const sidebar = document.getElementById("sidebar");
   if (!sidebar) return;
 
@@ -11,11 +11,13 @@ export function openMenu() {
 }
 
 // OPEN MOBILE HEADER
-export function openHeader() {
-  const header = document.getElementById("header");
-  if (!header) return;
+export function OpenMenu() {
+  document.getElementById("header").style.display = "flex";
+}
 
-  header.classList.toggle("hidden");
+// CLOSE MOBILE HEADER
+export function CloseMenu() {
+  document.getElementById("header").style.display = "none";
 }
 
 // FUNCTION SCROLL TO TOP
