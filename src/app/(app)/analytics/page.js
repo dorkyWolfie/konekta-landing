@@ -56,10 +56,10 @@ export default async function AnalyticsPage() {
   if (!User || User.subscriptionStatus !== 'pro') {
     return (
       <SectionBox>
-        <h2>Аналитика не е достапна на обичниот план</h2>
+        <h2>Аналитика не е достапна на овој план</h2>
         <p>Доколку сакате да го надградите профилот <Link href="/upgrade">кликнете тука</Link></p>
       </SectionBox>
-    ) // or show an upgrade message
+    )
   }
 
   return (
@@ -69,7 +69,7 @@ export default async function AnalyticsPage() {
         <Chart data={groupedViews.map(o => ({
           'date': o._id, 
           'views': o.count
-          }))} />
+        }))} />
       </SectionBox>
       <SectionBox>
         <h2 className="text-xl mb-6 font-bold text-center">Кликови</h2>

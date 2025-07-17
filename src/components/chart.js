@@ -1,51 +1,84 @@
 'use client';
-import { formatISO9075, format, parseISO, addDays, differenceInDays } from "date-fns";
-import { CartesianGrid, LineChart, Tooltip, XAxis, YAxis, Line, ResponsiveContainer } from "recharts";
+import { useState } from "react";
+import { parseISO, format, subDays, addDays, differenceInDays } from "date-fns";
+import { CartesianGrid, LineChart, Tooltip, XAxis, YAxis, Line, ResponsiveContainer, Area, AreaChart } from "recharts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-export default function Chart({data}) {
-  const xLabelKey = Object.keys(data[0]).find(key => key !== 'date');
+const daysPerPage = 30;
 
-  const dataWithoutGaps = [];
+export default function Chart({ data }) {
+  const [page, setPage] = useState(0);
 
-  data.forEach((value, index) => {
-    const dateObj = parseISO(value.date);
-    const formattedDate = format(dateObj, 'dd-MM');
+  if (!data || data.length === 0) return <p>Нема податоци</p>;
 
-    dataWithoutGaps.push({
-      date: formattedDate,
-      [xLabelKey]: value?.[xLabelKey] || 0,
-    });
+  const xLabelKey = Object.keys(data[0]).find((key) => key !== "date");
 
-    const nextDateRaw = data?.[index + 1]?.date;
-    if (nextDateRaw) {
-      const nextDate = parseISO(nextDateRaw);
-      const daysBetween = differenceInDays(nextDate, dateObj);
+  const today = new Date();
+  const endDate = subDays(today, page * daysPerPage);
+  const startDate = subDays(endDate, daysPerPage - 1);
 
-      if (daysBetween > 1) {
-        for (let i = 1; i < daysBetween; i++) {
-          const dateBetween = addDays(dateObj, i);
-          const formattedBetweenDate = format(dateBetween, 'dd-MM');
+  const fullDateRange = [];
+  for (let i = 0; i < daysPerPage; i++) {
+    fullDateRange.push(addDays(startDate, i));
+  }
 
-          dataWithoutGaps.push({
-            date: formattedBetweenDate,
-            [xLabelKey]: 0,
-          });
-        }
-      }
-    }
+  const dataMap = new Map();
+  data.forEach(item => {
+    const d = parseISO(item.date);
+    dataMap.set(format(d, 'yyyy-MM-dd'), item[xLabelKey]);
   });
+
+  const dataWithoutGaps = fullDateRange.map(dateObj => {
+    const key = format(dateObj, 'yyyy-MM-dd');
+    return {
+      date: format(dateObj, 'dd-MM'),
+      [xLabelKey]: dataMap.get(key) || 0
+    };
+  });
+
+  const totalDays = differenceInDays(
+    parseISO(data[data.length - 1].date),
+    parseISO(data[0].date)
+  ) + 1;
+
+  const totalPages = Math.ceil(totalDays / daysPerPage);
 
   return (
     <div>
       <ResponsiveContainer width="100%" height={200}>
-        <LineChart width={730} height={250} data={dataWithoutGaps} margin={{ top: 5, right: 30,   left: 20, bottom: 5 }}>
+        <AreaChart data={dataWithoutGaps} margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
+          <defs>
+            <linearGradient id="colorFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#2B7FFF" stopOpacity={0.7} />
+              <stop offset="100%" stopColor="#2B7FFF" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <CartesianGrid horizontal={false} strokeWidth="3" stroke="#f5f5f5" />
-          <XAxis dataKey="date" axisLine={false} tickLine={false} tickMargin={10} tick={{fill:  '#aaa'}} />
-          <YAxis axisLine={false} tickLine={false} tickMargin={10} tick={{fill: '#aaa'}} />
+          <XAxis dataKey="date" axisLine={false} tickLine={false} tickMargin={10} tick={{ fill: "#aaa" }} />
+          <YAxis axisLine={false} tickLine={false} tickMargin={10} tick={{ fill: "#aaa" }} />
           <Tooltip />
-          <Line type="monotone" dataKey={xLabelKey} stroke="#2B7FFF" strokeWidth="2" fill="#2B7FFF" />
-        </LineChart>
+          <Area type="monotone" dataKey={xLabelKey} stroke="#2B7FFF" fill="url(#colorFill)" strokeWidth={2} />
+        </AreaChart>
       </ResponsiveContainer>
+      {/* Pagination */}
+      <div className="flex justify-center items-center gap-4 mt-4">
+        <button
+          disabled={page === 0}
+          onClick={() => setPage(page - 1)}
+          className="flex gap-2 items-center px-4 py-1 bg-gray-200 text-sm rounded disabled:opacity-50">
+          <FontAwesomeIcon icon={faArrowLeft} />
+          <span>Претходна</span>
+        </button>
+        <span className="text-sm text-gray-500">Страница {page + 1} од {totalPages}</span>
+        <button
+          disabled={page === totalPages - 1}
+          onClick={() => setPage(page + 1)}
+          className="flex gap-2 items-center px-4 py-1 bg-gray-200 text-sm rounded disabled:opacity-50">
+          <span>Следна</span>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
+      </div>
     </div>
   );
 }
