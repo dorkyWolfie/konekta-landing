@@ -160,7 +160,7 @@ export const proizvodi = [
   },
   {
     image: "/stiker.webp",
-    name: "Округла Налепница",
+    name: "Кружна Налепница",
     price: "300 ден.",
     description: "Залепи ја каде било – твојата Конекта може да биде и на лаптоп, телефон или врата.",
     features: [

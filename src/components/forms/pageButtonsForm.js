@@ -12,10 +12,10 @@ import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faW
 
 export const allButtons = [
   {key: 'email', label: 'E-mail', icon: faEnvelope, placeholder: "username@mail.com"},
-  {key: 'phone', label: 'Телефон', icon: faMobile, placeholder: "+389 70 123 456"},
+  {key: 'phone', label: 'Телефон', icon: faMobile, placeholder: "+38970123456"},
   {key: 'instagram', label: 'Instagram', icon: faInstagram, placeholder: "instagram.com/username"},
   {key: 'facebook', label: 'Facebook', icon: faFacebook, placeholder: "facebook.com/username"},
-  {key: 'discord', label: 'Discord', icon: faDiscord, placeholder: "discord.com/users/username"},
+  {key: 'discord', label: 'Discord', icon: faDiscord, placeholder: "discordapp.com/users/username"},
   {key: 'tiktok', label: 'TikTok', icon: faTiktok, placeholder: "tiktok.com/@username"},
   {key: 'youtube', label: 'Youtube', icon: faYoutube, placeholder: "youtube.com/@username"},
   {key: 'whatsapp', label: 'WhatsApp', icon: faWhatsapp, placeholder: "wa.me/38970123456"},

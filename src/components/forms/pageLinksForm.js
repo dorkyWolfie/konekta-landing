@@ -69,7 +69,7 @@ function removeLink(linkKeyToRemove) {
         <h2 className="text-2xl font-bold mb-4">Линкови</h2>
         <button 
           onClick={addNewLink} type="button" 
-          className="text-[#3b82f6] text-lg flex gap-2 items-center cursor-pointer">
+          className="text-[#3b82f6] text-lg flex gap-2 items-center cursor-pointer hover:text-[#1d4ed8]">
           <FontAwesomeIcon icon={faPlus} />
           <span>Внеси нов линк</span>
         </button>
@@ -120,7 +120,7 @@ function removeLink(linkKeyToRemove) {
                     value={l.subtitle} onChange={ev => handleLinkChange(l.key, 'subtitle', ev)} type="text" placeholder="Поднаслов (не е задолжително)" />
                   <label className="input-label">Линк</label>
                   <input 
-                    value={l.url} onChange={ev => handleLinkChange(l.key, 'url', ev)} type="text" placeholder="Линк" />
+                    value={l.url} onChange={ev => handleLinkChange(l.key, 'url', ev)} type="text" placeholder="website.com" />
                 </div>
               </div>
             ))}

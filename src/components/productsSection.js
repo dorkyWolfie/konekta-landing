@@ -1,11 +1,11 @@
 'use client';
 import Image from "next/image";
+import PopUp from "@/components/layout/popup";
+import ProductForm from "./forms/contactForms/productForm";
 import { useState } from "react";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import PopUp from "@/components/layout/popup";
-import ProductForm from "./forms/contactForms/productForm";
 
 
 export default function ProductSection({ proizvodi }) {
