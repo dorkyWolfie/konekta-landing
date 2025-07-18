@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import mongoose from "mongoose";
 import { user } from "@/models/user";
+import mongoose from "mongoose";
 
 export async function generateMetadata() {
   const session = await getServerSession(authOptions);

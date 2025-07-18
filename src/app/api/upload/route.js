@@ -1,3 +1,4 @@
+// image storage
 import { S3Client } from '@aws-sdk/client-s3';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import uniqid from 'uniqid';

@@ -1,3 +1,4 @@
+// vcard for download - grabs info form user & page - converts from cyrilic to latin
 import mongoose from 'mongoose';
 import fetch from 'node-fetch';
 import { NextResponse } from 'next/server';

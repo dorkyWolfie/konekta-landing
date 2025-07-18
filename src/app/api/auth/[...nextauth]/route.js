@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import clientPromise from "@/libs/mongoClient";
 import GoogleProvider from "next-auth/providers/google";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import mongoose from "mongoose";
-import { user as UserModel } from "@/models/user"; // твојот модел
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import { user as UserModel } from "@/models/user";
 
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,

@@ -1,3 +1,4 @@
+// upload images
 import { toast } from 'react-hot-toast';
 
 export async function upload(ev, callbackFn) {

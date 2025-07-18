@@ -1,3 +1,4 @@
+// for analytics
 import { event } from "@/models/event";
 import mongoose from "mongoose";
 
