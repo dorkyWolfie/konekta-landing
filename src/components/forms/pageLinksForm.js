@@ -8,14 +8,27 @@ import { useState } from "react";
 import { ReactSortable } from "react-sortablejs";
 import { upload } from "@/libs/upload";
 import { toast } from "react-hot-toast";
-import { savePageLinks } from "@/actions/pageActions";
+import { savePageLinks } from "@/actions/linkActions";
+import { useRouter } from 'next/navigation';
 
 export default function PageLinksForm({page,user}) {
+  const router = useRouter();
   const [links, setLinks] = useState(page.links || []);
 
   async function save() {
-    await savePageLinks(links);
-    toast.success('Зачувано!');
+    try {
+      const result = await savePageLinks(links);
+
+      if (result.success) {
+        toast.success('Зачувано!');
+      } else {
+        toast.error('Грешка при зачувување!');
+      }
+    } catch (error) {
+      toast.error('Грешка при зачувување!');
+    } finally {
+      router.refresh();
+    }
   }
 
   function addNewLink() {
@@ -48,12 +61,12 @@ export default function PageLinksForm({page,user}) {
   setLinks(prev => {
     const newLinks = [...prev];
     newLinks.forEach((link) => {
-          if (link.key === keyOfLinkToChange) {
-            link[prop] = ev.target.value;
-          }
-        });
-    return [...prev];
-  })
+      if (link.key === keyOfLinkToChange) {
+        link[prop] = ev.target.value;
+      }
+    });
+    return newLinks;
+  });
 }
 
 function removeLink(linkKeyToRemove) {
@@ -76,15 +89,15 @@ function removeLink(linkKeyToRemove) {
         <div>
           <ReactSortable handle=".handle" list={links} setList={setLinks}>
             {links.map(l => (
-              <div key={l.key} className="mt-8 flex gap-2 items-center sm:flex-nowrap flex-wrap justify-center">
+              <div key={l.title} className="mt-8 flex flex-row justify-center sm:justify-start gap-6 flex-wrap md:flex-nowrap items-center">
                 <div className="mt-8 flex gap-2 items-center">
                   <div className="handle py-2 cursor-grab">
-                    <FontAwesomeIcon icon={faGripLines} className="text-[#6b7280]  hover:text-[#60a5fa]" />
+                    <FontAwesomeIcon icon={faGripLines} className="text-[#6b7280] hover:text-[#60a5fa]" />
                   </div>
                   <div className="text-center flex flex-col items-center gap-2 text-sm">
                     <div className="aspect-square max-w-[50px]">
                       {l.icon && (
-                        <Image 
+                        <Image
                           src={l.icon} alt={'icon'} 
                           className="w-full h-full object-cover"
                           width={50} height={50} />
@@ -120,7 +133,7 @@ function removeLink(linkKeyToRemove) {
                     value={l.subtitle} onChange={ev => handleLinkChange(l.key, 'subtitle', ev)} type="text" placeholder="Поднаслов (не е задолжително)" />
                   <label className="input-label">Линк</label>
                   <input 
-                    value={l.url} onChange={ev => handleLinkChange(l.key, 'url', ev)} type="text" placeholder="website.com" />
+                    value={l.url} onChange={ev => handleLinkChange(l.key, 'url', ev)} type="text" placeholder="https://website.com" />
                 </div>
               </div>
             ))}

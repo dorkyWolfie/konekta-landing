@@ -90,7 +90,7 @@ export default function PageSettingsForm({page, user}) {
             <div className="relative -top-8">
               <Image 
                 className="rounded-full border-4 border-white shadow shadow-black/50 aspect-square object-cover"
-                src={avatar} alt={'avatar'} width={128} height={128} />
+                src={avatar || '/konekta_logo_4.png'} alt={'avatar'} width={128} height={128} />
               <label 
                 htmlFor="avatarIn" 
                 className="cursor-pointer absolute -bottom-0 -right-2 bg-white p-2 rounded-full shadow shadow-black/50 aspect-square flex items-center justify-center hover:text-[#3b82f6]">
@@ -99,7 +99,7 @@ export default function PageSettingsForm({page, user}) {
               <input 
                 onChange={handleAvatarImageChange} 
                 id="avatarIn" type="file" className="hidden" />
-              <input type="hidden" name="avatar" value={avatar} />
+              <input type="hidden" name="avatar" value={avatar || 'avatar'} />
             </div>
           </div>
           <div>

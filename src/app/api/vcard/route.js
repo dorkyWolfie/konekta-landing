@@ -51,6 +51,20 @@ async function getBase64Image(imageUrl) {
   return `PHOTO;ENCODING=b;TYPE=${mimeType.split('/')[1].toUpperCase()}:${base64}`;
 }
 
+// Helper function to get button value by type
+function getButtonValue(buttons, buttonType) {
+  if (!buttons || !Array.isArray(buttons)) return null;
+  
+  const button = buttons.find(btn => 
+    btn.isActive && 
+    btn.value && 
+    btn.value.trim() !== '' && 
+    btn.type === buttonType
+  );
+  
+  return button ? button.value.trim() : null;
+}
+
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const uri = searchParams.get('uri');
@@ -67,9 +81,21 @@ export async function GET(req) {
     return new NextResponse('Page not found', { status: 404 });
   }
 
-  const displayNameLatin = cyrillicToLatin(Page.displayName);
-  const companyLatin = cyrillicToLatin(Page.company);
-  const positionLatin = cyrillicToLatin(Page.position);
+  const displayNameLatin = cyrillicToLatin(Page.displayName || '');
+  const companyLatin = cyrillicToLatin(Page.company || '');
+  const positionLatin = cyrillicToLatin(Page.position || '');
+
+  // Get buttons - check both new and legacy formats
+  let buttons = [];
+  if (Page.buttons && Array.isArray(Page.buttons)) {
+    buttons = Page.buttons;
+  } else if (Page.buttonsArray && Array.isArray(Page.buttonsArray)) {
+    buttons = Page.buttonsArray;
+  }
+
+  // Extract only phone and email from buttons
+  const emailValue = getButtonValue(buttons, 'email');
+  const phoneValue = getButtonValue(buttons, 'phone');
 
   const lines = [
     'BEGIN:VCARD',
@@ -78,11 +104,12 @@ export async function GET(req) {
     `FN:${displayNameLatin}`,
     companyLatin ? `ORG:${companyLatin}` : '',
     positionLatin ? `TITLE:${positionLatin}` : '',
-    Page.buttons?.phone ? `TEL;TYPE=CELL:${Page.buttons.phone}` : '',
-    Page.buttons?.email ? `EMAIL:${Page.buttons.email}` : '',
+    phoneValue ? `TEL;TYPE=CELL:${phoneValue}` : '',
+    emailValue ? `EMAIL:${emailValue}` : '',
     `URL:https://konekta.mk/${uri}`,
   ];
 
+  // Add photo
   if (User.image) {
     try {
       const photoLine = await getBase64Image(User.image);
