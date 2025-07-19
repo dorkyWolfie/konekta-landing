@@ -5,18 +5,21 @@ import PageSettingsForm from "@/components/forms/pageSettingsForm";
 import PageButtonsForm from "@/components/forms/pageButtonsForm";
 import PageLinksForm from "@/components/forms/pageLinksForm";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { page } from "@/models/page";
 import { user } from "@/models/user";
+import { headers } from "next/headers";
+import { getToken } from "next-auth/jwt";
 
 export default async function AccountPage({ searchParams }) {
-    const session = await getServerSession(authOptions);
     const resolvedSearchParams = await searchParams;
     const desiredUsername = resolvedSearchParams?.desiredUsername;
 
+    const session = await getServerSession(authOptions);
+
     if (!session) {
-     return redirect('/');
+      redirect("/login");
     }
 
     mongoose.connect(process.env.MONGO_URI);

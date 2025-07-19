@@ -1,5 +1,5 @@
 'use server';
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { page } from "@/models/page";
 import { getServerSession } from "next-auth";
 import mongoose from "mongoose";

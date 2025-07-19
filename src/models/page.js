@@ -11,7 +11,7 @@ const PageSchema = new Schema({
     bgType: {type: String, default: 'color'},
     bgColor: {type: String, default: '#d1d5db'},
     bgImage: {type: String, default: ''},
-    buttons: {type: Object, default: {}},
+    buttons: {type: Object, default: []},
     links: {type: Object, default: []},
 }, {timestamps: true});
 

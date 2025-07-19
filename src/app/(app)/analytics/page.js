@@ -6,7 +6,7 @@ import { event } from "@/models/event";
 import { page } from "@/models/page";
 import { user } from "@/models/user";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
@@ -35,7 +35,7 @@ export default async function AnalyticsPage() {
         _id: {
           $dateToString: {
             date: "$createdAt",
-            format: "%Y-%m-%d", // "%Y-%m-%d"
+            format: "%Y-%m-%d",
           },
         },
         count: { "$count": {} },
@@ -57,7 +57,7 @@ export default async function AnalyticsPage() {
     return (
       <SectionBox>
         <h2>Аналитика не е достапна на овој план</h2>
-        <p>Доколку сакате да го надградите профилот <Link href="/upgrade">кликнете тука</Link></p>
+        <p>Доколку сакате да го надградите профилот <Link href="/#cenovnik" className="text-[#2563eb] hover:[#1d4ed8] hover:underline">кликнете тука</Link></p>
       </SectionBox>
     )
   }
