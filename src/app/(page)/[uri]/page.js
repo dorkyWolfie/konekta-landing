@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faLocationDot, faPhone, faEnvelope, faBriefcase, faGlobe, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faWhatsapp, faYoutube, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-const icons = {
+export const icons = {
   email: faEnvelope,
   phone: faPhone,
   whatsapp: faWhatsapp,
@@ -71,7 +71,7 @@ function buttonLink(type, value) {
 }
 
 // Helper function to get the button type from custom types
-function getButtonType(buttonType) {
+export function getButtonType(buttonType) {
   if (buttonType.startsWith('custom_')) {
     return 'custom';
   }
@@ -155,6 +155,7 @@ export default async function UserPage({params}) {
             {activeButtons.map(button => (
               <Link
                 key={button.key} 
+                ping={`${process.env.URL}/api/click?url=${btoa(button.value)}&page=${Page.uri}`}
                 target="_blank"
                 href={buttonLink(getButtonType(button.type), button.value)} 
                 className="aspect-square rounded-full bg-white/75 shadow-sm p-3 text-center flex items-center justify-center hover:bg-white/90 transition-colors"

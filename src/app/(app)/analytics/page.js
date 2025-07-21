@@ -2,6 +2,7 @@ import SectionBox from "@/components/layout/sectionBox";
 import mongoose from "mongoose";
 import Chart from "@/components/chart";
 import Link from "next/link";
+import Image from "next/image";
 import { event } from "@/models/event";
 import { page } from "@/models/page";
 import { user } from "@/models/user";
@@ -9,8 +10,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faLocationDot, faPhone, faEnvelope, faBriefcase, faGlobe, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faWhatsapp, faYoutube, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { isToday } from "date-fns";
+import { getButtonType } from "@/app/(page)/[uri]/page";
+import { icons } from "@/app/(page)/[uri]/page";
 
 export default async function AnalyticsPage() {
   mongoose.connect(process.env.MONGO_URI);
@@ -53,6 +57,9 @@ export default async function AnalyticsPage() {
     type: 'click',
   });
 
+  const linkClicks = clicks.filter(c => Page.links?.some(l => l.url === c.uri));
+  const buttonClicks = clicks.filter(c => Page.buttons?.some(b => b.value === c.uri));
+
   if (!User || User.subscriptionStatus !== 'pro') {
     return (
       <SectionBox>
@@ -72,29 +79,75 @@ export default async function AnalyticsPage() {
         }))} />
       </SectionBox>
       <SectionBox>
-        <h2 className="text-xl mb-6 font-bold text-center">Кликови</h2>
-        {Page.links.map(link => (
-          <div key={link.url} className="flex gap-6 items-center justify-center border-t border-[#e5e7eb] py-4">
-            <div className="text-[#3b82f6] pl-4">
-              <FontAwesomeIcon icon={faLink} />
-            </div>
-            <div className="grow">
-              <h3>{link.title || 'Нема наслов'}</h3>
-              <p className="text-[#6b7280] text-sm">{link.subtitle || 'Нема поднаслов'}</p>
-              <a target="_blank" href={link.url} className="text-[#1d4ed8] text-xs">{link.url}</a>
-            </div>
-            <div className="text-center flex items-center justify-center gap-4">
-              <div className="flex flex-col gap-2">
-                <span className="text-xl">{clicks.filter(c => c.uri === link.url && isToday(c.createdAt)).length}</span>
-                <span className="text-[#9ca3af] text-xs uppercase font-bold">Денес:</span>
+        <h2 className="text-xl mb-6 font-bold text-center">Кликови од Копчиња</h2>
+        {Page.buttons.map(button => {
+          const today = buttonClicks.filter(c => c.uri === button.value && isToday(c.createdAt)).length;
+          const total = buttonClicks.filter(c => c.uri === button.value).length;
+          return (
+            <div key={button.key} className="flex gap-6 items-center justify-center border-t border-[#e5e7eb] py-4">
+              <div className="text-[#3b82f6] pl-4">
+                {button.icon ? (
+                  <Image 
+                    src={button.icon} alt={button.title || button.type} 
+                    width={24} height={24} className="w-6 h-6 object-contain" 
+                  />
+                ) : (
+                  <FontAwesomeIcon 
+                    icon={icons[getButtonType(button.type)] || (button.isCustom ? faUser : faGlobe)} className="w-6 h-6" 
+                  />
+                )}
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-xl">{clicks.filter(c => c.uri === link.url).length}</span>
-                <span className="text-[#9ca3af] text-xs uppercase font-bold">Вкупно:</span>
+              <div className="grow">
+                <h3>{button.title || 'Нема наслов'}</h3>
+                <a target="_blank" href={button.value} className="text-[#1d4ed8] text-xs">{button.value}</a>
+              </div>
+              <div className="text-center flex items-center justify-center gap-4">
+                <div className="flex flex-col gap-2">
+                  <span className="text-xl">{today}</span>
+                  <span className="text-[#9ca3af] text-xs uppercase font-bold">Денес:</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-xl">{total}</span>
+                  <span className="text-[#9ca3af] text-xs uppercase font-bold">Вкупно:</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
+      </SectionBox>
+      <SectionBox>
+        <h2 className="text-xl mb-6 font-bold text-center">Кликови од Линкови</h2>
+        {Page.links.map(link => {
+          const today = linkClicks.filter(c => c.uri === link.url && isToday(c.createdAt)).length;
+          const total = linkClicks.filter(c => c.uri === link.url).length;
+          return (
+            <div key={link.title} className="flex gap-6 items-center justify-center border-t border-[#e5e7eb] py-4">
+              <div className="text-[#3b82f6] pl-4">
+                {link.icon ? (
+                  <Image 
+                    src={link.icon} alt={link.title} 
+                    width={24} height={24} className="w-6 h-6 object-contain" 
+                  />
+                  ) : ( <FontAwesomeIcon icon={faLink} className="w-6 h-6" />
+                )}
+              </div>
+              <div className="grow">
+                <h3>{link.title || 'Нема наслов'}</h3>
+                <a target="_blank" href={link.url} className="text-[#1d4ed8] text-xs">{link.url}</a>
+              </div>
+              <div className="text-center flex items-center justify-center gap-4">
+                <div className="flex flex-col gap-2">
+                  <span className="text-xl">{today}</span>
+                  <span className="text-[#9ca3af] text-xs uppercase font-bold">Денес:</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-xl">{total}</span>
+                  <span className="text-[#9ca3af] text-xs uppercase font-bold">Вкупно:</span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </SectionBox>
     </div>
   )

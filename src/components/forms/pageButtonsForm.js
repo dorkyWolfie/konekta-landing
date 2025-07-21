@@ -12,7 +12,7 @@ import { toast } from "react-hot-toast";
 import { savePageButtons } from "@/actions/buttonActions";
 import { useRouter } from 'next/navigation';
 
-const BUTTON_TYPES = {
+export const BUTTON_TYPES = {
   email: { icon: faEnvelope, label: 'Email', placeholder: 'email@example.com', type: 'email' },
   phone: { icon: faPhone, label: 'Телефон', placeholder: '+38970123456', type: 'tel' },
   whatsapp: { icon: faWhatsapp, label: 'WhatsApp', placeholder: '+38970123456', type: 'tel' },

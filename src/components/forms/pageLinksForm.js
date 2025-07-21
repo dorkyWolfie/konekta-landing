@@ -21,6 +21,7 @@ export default function PageLinksForm({page,user}) {
 
       if (result.success) {
         toast.success('Зачувано!');
+        router.refresh();
       } else {
         toast.error('Грешка при зачувување!');
       }
