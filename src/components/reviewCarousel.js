@@ -16,7 +16,7 @@ export default function ReviewCarousel() {
       onMouseLeave={plugin.current.reset} >
       <CarouselContent>
         {reviews.map((reviews, index) => (
-          <CarouselItem key={index} className={""}  >
+          <CarouselItem key={index} >
             <div className="flex flex-col py-6 px-4">
               <div className="corner-border">
                 <div className="pl-10 max-md:pl-2 py-2">

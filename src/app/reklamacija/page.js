@@ -1,13 +1,16 @@
-export default function UslovniNaKoristenje() {
+export default function Reklamacija() {
   return (
     <main>
-      <section className="max-w-4xl mt-30 text-center">
-        <h1 className="text-3xl pb-2">Услови на користење</h1>
-        <p>Овие Услови на користење важат за сите корисници на Конекта и ја дефинираат нашата меѓусебна доверба.</p>
+      <section className="relative max-w-4xl mt-30 text-center">
+        <span className="absolute top-0 left-0 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
+        <h1 className="text-3xl pb-2">Политика за поврат и рефундација</h1>
+        <p>Наша цел е да бидете задоволни со вашиот производ.</p>
+        <p>Aко се појави некој проблем, тука сме да го решиме.</p>
       </section>
       <section className="max-w-4xl flex flex-col gap-2">
-        <h2>Што добивате со Конекта</h2>
-        <p>Со секоја Конекта визит картичка добивате пристап до ваш личен дигитален профил, кој можете да го ажурирате, прилагодувате и споделувате со други лица преку NFC технологија, QR код или со линк (ваш URL кој води само кон вашиот профил).</p>
+        <h2>Физички производи</h2>
+        <p>Замена или рекламација на физички производи не правиме.</p>
+        <p>Секој производ е внимателно проверен и тестиран пред да се испрати, што значи дека производот не е оштетен од наша страна.</p>
       </section>
       <section className="max-w-4xl flex flex-col gap-2">
         <h2>Одговорност на корисникот</h2>

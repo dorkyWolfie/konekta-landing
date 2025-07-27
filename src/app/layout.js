@@ -1,4 +1,4 @@
-import "../globals.css";
+import "./globals.css";
 import { Manrope } from 'next/font/google'
 import Header from "@/components/header";
 import Footer from "@/components/footer";

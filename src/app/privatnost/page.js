@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 export default function Privatnost() {
   return (
     <main>
-      <section className="max-w-4xl mt-30 text-center">
+      <section className="relative max-w-4xl mt-30 text-center">
+        <span className="absolute top-0 left-0 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
         <h1 className="text-3xl pb-2">Политика на приватност</h1>
         <p>Тимот на Конекта сериозно ја сфаќа вашата приватност.</p>
         <p>Нашата цел е да ви овозможиме корисно, сигурно и транспарентно искуство.</p>
@@ -21,7 +24,11 @@ export default function Privatnost() {
       <section className="max-w-4xl mb-20 flex flex-col gap-2">
         <h2>Вашите права</h2>
         <p>Можете во секое време да ги ажурирате или избришете вашите информации.</p>
-        <p>Ако сакате целосно да го избришеме вашиот профил и податоци, доволно е да ни пратите порака на нашиот е-маил и ќе го направиме тоа во рок од 3 работни дена, по што ќе добиете повратна порака дека вашите информации се успешно избришани.</p>
+        <p>
+          Ако сакате целосно да го избришеме вашиот профил и податоци, доволно е да ни пратите порака на нашата е-пошта 
+          <Link href="mailto:info@konekta.mk" className="font-[600] text-[#3b82f6] hover:text-[#1d4ed8]">info@konekta.mk</Link> 
+          и ќе го направиме тоа во рок од 3 работни дена, по што ќе добиете повратна порака дека вашите информации се успешно избришани.
+        </p>
       </section>
     </main>
   );

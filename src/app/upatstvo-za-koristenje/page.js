@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 export default function NacinNaKoristenje() {
   return (
     <main>
-      <section className="max-w-4xl mt-30 text-center">
+      <section className="relative max-w-4xl mt-30 text-center">
+        <span className="absolute top-0 left-0 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
         <h1 className="text-3xl pb-2">Упатство за користење</h1>
         <p>Како се користи Конекта профилот и производите</p>
       </section>
@@ -65,7 +68,10 @@ export default function NacinNaKoristenje() {
         </ul>
       </section>
       <section className="max-w-4xl mb-20">
-        <h3>Доколку имате било какви прашања во врска со нашите производи или профилот слободно контактирајте не.</h3>
+        <h3>
+          Доколку имате било какви прашања во врска со нашите производи или профилот слободно контактирајте не на 
+          <Link href="mailto:info@konekta.mk" className="font-[600] text-[#3b82f6] hover:text-[#1d4ed8]"> info@konekta.mk</Link>.
+        </h3>
       </section>
     </main>
   );

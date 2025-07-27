@@ -1,7 +1,8 @@
 export default function Kolacinja() {
   return (
     <main>
-      <section className="max-w-4xl mt-30 text-center">
+      <section className="relative max-w-4xl mt-30 text-center">
+        <span className="absolute top-0 left-0 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
         <h1 className="text-3xl pb-2">Политика за колачиња (cookies)</h1>
         <p>Како речиси секоја модерна веб-страница, и Конекта користи колачиња – но само оние кои се навистина потребни.</p>
       </section>

@@ -13,6 +13,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt, faLock, faRepeat, faClose } from "@fortawesome/free-solid-svg-icons";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import Faq from "@/components/faq";
 
 
 export default function Home() {
@@ -142,18 +143,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* ---- PROIZVODI SECTION ---- */}
-      <section id="proizvodi" className="max-w-6xl flex flex-col items-center gap-10">
-        <h2>Изрази се со стил</h2>
-          <ProductSection proizvodi={proizvodi} />
-        <div className="text-center font-[600] text-xs opacity-80">
-          <p className="text-[#4b5563] pb-2">Сите картички доаѓаат со NFC чип, уникатен QR код и пристап до твојот Конекта профил.</p>
-          <p className="text-[#b91c1c]">Сите цени се изразени во денарска противвредност <strong>БЕЗ,</strong> пресметано ддв.</p>
-        </div>
-      </section>
       {/* ---- CENOVNIK SECTION ---- */}
       <section id="cenovnik" className="max-w-6xl flex flex-col items-center gap-10">
-        <h2>Избери план што одговара на твојот стил</h2>
+        <h2>Избери го планот што најмногу одговара на твоите потреби</h2>
         <div>
           <PriceSlider />
         </div>
@@ -166,10 +158,34 @@ export default function Home() {
           </button>
         </div>
       </section>
+      {/* ---- PROIZVODI SECTION ---- */}
+      <section id="proizvodi" className="max-w-6xl flex flex-col items-center gap-8">
+        <h2>Изрази се со стил</h2>
+        <h3 className="text-sm -mt-6">Производи што се купуваат еднократно:</h3>
+        <ProductSection proizvodi={proizvodi} />
+        <div className="text-center font-[600] text-xs opacity-80">
+          <p className="text-[#4b5563] pb-2">Сите картички доаѓаат со NFC чип, уникатен QR код и пристап до твојот Конекта профил.</p>
+          <p className="text-[#b91c1c]">Сите цени се изразени во денарска противвредност <strong>БЕЗ,</strong> пресметано ддв.</p>
+        </div>
+        <div className="text-center font-[800]">
+          <h3 className="text-lg text-[#2563eb]">Не знаеш од каде да почнеш?</h3>
+          <h3 className="text-sm mt-2 mb-4">Контактирај нè и ќе ти помогнеме да го избереш најдоброто решение за тебе или твојот бизнис.</h3>
+          <button 
+            onClick={() => setShowContactForm(true)} 
+            className="button-1">
+            КОНТАКТИРАЈ НЕ!
+          </button>
+        </div>
+      </section>
       {/* ---- RECENZII SECTION ---- */}
-      <section id="recenzii" className="max-w-6xl flex flex-col gap-8 items-center relative py-6 ">
+      {/* <section id="recenzii" className="max-w-6xl flex flex-col gap-8 items-center relative py-6 ">
         <h2 className="text-center">Што кажуваат нашите верни корисници?</h2>
         <ReviewCarousel />
+      </section> */}
+      {/* ---- FAQ SECTION ---- */}
+      <section id="faq" className="max-w-6xl flex flex-col items-center gap-8">
+        <h2 className="text-center">ЧПП</h2>
+        <Faq />
       </section>
       {/* ---- KONTAKT SECTION ---- */}
       <section id="kontakt" className="max-w-6xl flex flex-col items-center gap-10">

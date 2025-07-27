@@ -27,7 +27,7 @@ export default function ProductSection({ proizvodi }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 max-sm:grid-cols-1 gap-6">
         {proizvodi.map((proizvod, index) => (
           <div
             key={index}
@@ -35,7 +35,7 @@ export default function ProductSection({ proizvodi }) {
               setSelectedProduct(proizvod);
               setShowDescription(true);
             }}
-            className="aspect-square object-contain shadow p-4 flex flex-col items-center justify-center gap-2 hover:scale-105 hover:bg-[#dbeafe] transition-all duration-300 cursor-pointer" >
+            className="aspect-square object-contain shadow bg-white p-4 flex flex-col items-center justify-center gap-2 hover:scale-105 hover:bg-[#dbeafe] transition-all duration-300 cursor-pointer" >
             <Image src={proizvod.image} alt={proizvod.name} width={150} height={150} />
             <div className="text-sm flex flex-row justify-between gap-2 w-full">
               <h3 className="font-[700]">{proizvod.name}</h3>
