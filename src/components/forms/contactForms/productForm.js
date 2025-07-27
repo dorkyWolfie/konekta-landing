@@ -1,25 +1,50 @@
 'use client';
 import { useState } from 'react';
+import TurnstileWidget, { useTurnstile } from '@/components/turnstileWidget';
 
 export default function ProductForm({ selectedProduct }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({ ime: '', prezime: '', email: '', poraka: '', kolicina: 1 });
 
+  // Auto-verify with server
+  const { token, error, isVerified, isVerifying, handleVerify, handleError, handleExpire, reset } = useTurnstile(true);
+
   const handleChange = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    if (!isVerified || !token) {
+      alert('Ве молиме завршете ја верификацијата');
+      return;
+    }
+
     setLoading(true);
     setSuccess(false);
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tip: 'proizvod', selectedProduct, ...formData }),
-    });
-    setSuccess(res.ok);
-    if (res.ok) setFormData({ ime: '', prezime: '', email: '', poraka: '', kolicina: 1 });
-    setLoading(false);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tip: 'proizvod', selectedProduct, turnstileToken: token, ...formData }),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        setSuccess(true);
+        setFormData({ ime: '', prezime: '', email: '', poraka: '',  kolicina: 1 });
+        reset();
+      } else {
+        alert(result.error || 'Грешка при праќање');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Грешка при праќање на формата');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,6 +73,17 @@ export default function ProductForm({ selectedProduct }) {
           <label>Количина:</label>
           <input name="kolicina" type="number" min="1" placeholder="Количина" required value={formData.kolicina} onChange={handleChange} />
         </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <TurnstileWidget
+          onVerify={handleVerify}
+          onError={handleError}
+          onExpire={handleExpire}
+          autoVerify={true}
+          theme="light" 
+          size="normal"
+        />
+        {error && <p className="text-red-500 text-sm">Грешка: {error}</p>}
       </div>
       <button type="submit" className="button-1" disabled={loading} >
         {loading ? 'Се испраќа...' : 'Испрати'}

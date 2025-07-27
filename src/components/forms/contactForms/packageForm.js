@@ -1,25 +1,49 @@
 'use client';
 import { useState } from 'react';
+import TurnstileWidget, { useTurnstile } from '@/components/turnstileWidget';
 
 export default function PackageForm({ selectedPlan }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({ ime: '', prezime: '', email: '', poraka: '' });
 
+  const { token, error, isVerified, isVerifying, handleVerify, handleError, handleExpire, reset } = useTurnstile(true);
+
   const handleChange = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    if (!isVerified || !token) {
+      alert('Ве молиме завршете ја верификацијата');
+      return;
+    }
+
     setLoading(true);
     setSuccess(false);
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tip: 'paket', selectedPlan, ...formData }),
-    });
-    setSuccess(res.ok);
-    if (res.ok) setFormData({ ime: '', prezime: '', email: '', poraka: '' });
-    setLoading(false);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tip: 'paket', selectedPlan, turnstileToken: token, ...formData }),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        setSuccess(true);
+        setFormData({ ime: '', prezime: '', email: '', poraka: '' });
+        reset();
+      } else {
+        alert(result.error || 'Грешка при праќање');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Грешка при праќање на формата');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,6 +68,17 @@ export default function PackageForm({ selectedPlan }) {
           <textarea name="poraka" value={formData.poraka} onChange={handleChange} required />
         </div>
         <input value={`Избран пакет: ${selectedPlan}`} disabled />
+      </div>
+      <div className="flex flex-col gap-2">
+        <TurnstileWidget
+          onVerify={handleVerify}
+          onError={handleError}
+          onExpire={handleExpire}
+          autoVerify={true}
+          theme="light" 
+          size="normal"
+        />
+        {error && <p className="text-red-500 text-sm">Грешка: {error}</p>}
       </div>
       <button type="submit" className="button-1" disabled={loading} >
         {loading ? 'Се испраќа...' : 'Испрати'}
