@@ -74,7 +74,7 @@ export default function ProductForm({ selectedProduct }) {
           <input name="kolicina" type="number" min="1" placeholder="Количина" required value={formData.kolicina} onChange={handleChange} />
         </div>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 self-center">
         <TurnstileWidget
           onVerify={handleVerify}
           onError={handleError}

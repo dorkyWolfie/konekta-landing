@@ -145,7 +145,7 @@ export default function Home() {
       </section>
       {/* ---- CENOVNIK SECTION ---- */}
       <section id="cenovnik" className="max-w-6xl flex flex-col items-center gap-10">
-        <h2>Избери го планот што најмногу одговара на твоите потреби</h2>
+        <h2 className="text-center">Избери го планот што најмногу одговара на твоите потреби</h2>
         <div>
           <PriceSlider />
         </div>

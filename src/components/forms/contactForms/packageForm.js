@@ -69,7 +69,7 @@ export default function PackageForm({ selectedPlan }) {
         </div>
         <input value={`Избран пакет: ${selectedPlan}`} disabled />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 self-center">
         <TurnstileWidget
           onVerify={handleVerify}
           onError={handleError}

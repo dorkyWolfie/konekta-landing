@@ -79,7 +79,7 @@ export default function ContactFormAuto() {
           <textarea name="poraka" value={formData.poraka} onChange={handleChange} required />
         </div>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 self-center">
         <TurnstileWidget
           onVerify={handleVerify}
           onError={handleError}

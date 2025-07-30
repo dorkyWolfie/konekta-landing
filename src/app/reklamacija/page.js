@@ -2,7 +2,7 @@ export default function Reklamacija() {
   return (
     <main>
       <section className="relative max-w-4xl mt-30 text-center">
-        <span className="absolute top-0 left-0 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
+        <span className="absolute top-0 left-5 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
         <h1 className="text-3xl pb-2">Политика за поврат и рефундација</h1>
         <p>Наша цел е да бидете задоволни со вашиот производ.</p>
         <p>Aко се појави некој проблем, тука сме да го решиме.</p>

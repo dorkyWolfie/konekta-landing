@@ -4,7 +4,7 @@ export default function NacinNaKoristenje() {
   return (
     <main>
       <section className="relative max-w-4xl mt-30 text-center">
-        <span className="absolute top-0 left-0 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
+        <span className="absolute top-0 left-5 text-xs text-gray-500 font-[600]">Последна промена: 22.06.2025</span>
         <h1 className="text-3xl pb-2">Упатство за користење</h1>
         <p>Како се користи Конекта профилот и производите</p>
       </section>
