@@ -8,6 +8,17 @@ import { Toaster } from 'react-hot-toast';
 export const metadata = {
   title: "Конекта",
   description: "Твојата дигитална прва импресија",
+  openGraph: {
+    title: "Конекта",
+    description: "Твојата дигитална прва импресија",
+    images: [
+      {
+        url: "https://konekta.mk/_next/image?url=%2Fkonekta_logo_0.webp&w=96&q=75",
+        width: 96,
+        height: 96,
+      },
+    ],
+  },
   robots: {
       index: true,
       follow: true,
@@ -26,6 +37,9 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="Конекта" />
+        <meta property="og:description" content="Твојата дигитална прва импресија" />
+        <meta property="og:image" content="https://konekta.mk/_next/image?url=%2Fkonekta_logo_0.webp&w=96&q=75" />
         <link rel="icon" href="/icon.ico" sizes="32x32" />
       </head>
       <body>
