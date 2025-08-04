@@ -27,8 +27,8 @@ export default function PriceSlider() {
         {/* ---- PAKET 1 ---- */}
         <div className="flex flex-col justify-between my-auto text-lg border border-[#4f46e5]/30 bg-[#eef2ff] p-10 w-full h-full">
           <div>
-            <p className="text-[#4d66e5]">Лична Конекта</p>
-            <p className="text-4xl mt-5 font-[500] text-center">1 400 МКД</p>
+            <p className="text-[#3730a3]">Лична Конекта</p>
+            <p className="text-4xl mt-5 font-[500] text-center">1 500 МКД</p>
             <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно + ддв</p>
             <p className="text-sm font-[400]">Совршено решение за фриленсери и индивидуалци.</p>
             <ul className="my-5 pl-5 list-disc">
@@ -44,17 +44,15 @@ export default function PriceSlider() {
               <li>Брза поддршка за се што ти треба</li>
             </ul>
           </div>
-          <button 
-            onClick={() => handleOpenForm('Лична Конекта')}
-            className="w-full p-3 bg-[#6366f1] hover:bg-[#4f46e5] transition-all text-white cursor-pointer">
+          <button onClick={() => handleOpenForm('Лична Конекта')} className="w-full p-3 bg-[#4f46e5] hover:bg-[#3730a3] transition-all text-white cursor-pointer">
             Претплати се сега
           </button>
         </div>
         {/* ---- PAKET 2 ---- */}
         <div className="flex flex-col justify-between my-auto text-lg border border-[#2563eb]/30 bg-[#eff6ff] p-10 w-full h-full">
           <div>
-            <p className="text-[#4d66e5]">Тимска Конекта</p>
-            <p className="text-4xl mt-5 font-[500] text-center">1 100 МКД</p>
+            <p className="text-[#1e40af]">Тимска Конекта</p>
+            <p className="text-4xl mt-5 font-[500] text-center">1 200 МКД</p>
             <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно/профил + ддв</p>
             <p className="text-sm font-[400]">Идеално за мали тимови – претстави го брендот како што заслужува.</p>
             <ul className="my-5 pl-5 list-disc">
@@ -70,16 +68,14 @@ export default function PriceSlider() {
               <li>Брза поддршка за се што ти треба</li>
             </ul>
           </div>
-          <button 
-            onClick={() => handleOpenForm('Тимска Конекта')}
-            className="w-full p-3 bg-[#3b82f6] hover:bg-[#2563eb] transition-all text-white cursor-pointer">
+          <button onClick={() => handleOpenForm('Тимска Конекта')} className="w-full p-3 bg-[#2563eb] hover:bg-[#1e40af] transition-all text-white cursor-pointer">
             Претплати се сега
           </button>
         </div>
         {/* ---- PAKET 3 ---- */}
         <div className="flex flex-col justify-between my-auto text-lg border border-[#7c3aed]/30 bg-[#f5f3ff] p-10 w-full h-full">
           <div>
-            <p className="text-[#4d66e5]">Бизнис Конекта</p>
+            <p className="text-[#5b21b6]">Бизнис Конекта</p>
             <p className="text-4xl mt-5 font-[500] text-center">800 МКД</p>
             <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно/профил + ддв</p>
             <p className="text-sm font-[400]">За компании што растат.</p>
@@ -96,18 +92,14 @@ export default function PriceSlider() {
               <li>Брза поддршка за се што ти треба</li>
             </ul>
           </div>
-          <button 
-            onClick={() => handleOpenForm('Бизнис Конекта')}
-            className="w-full p-3 bg-[#8b5cf6] hover:bg-[#7c3aed] transition-all text-white cursor-pointer">
+          <button onClick={() => handleOpenForm('Бизнис Конекта')} className="w-full p-3 bg-[#7c3aed] hover:bg-[#5b21b6] transition-all text-white cursor-pointer">
             Претплати се сега
           </button>
         </div>
       </div>
       {showContactForm && (
         <PopUp>
-          <button
-            onClick={() => setShowContactForm(false)}
-            className="absolute top-4 right-4 font-bold" >
+          <button onClick={() => setShowContactForm(false)} className="absolute top-4 right-4 font-bold" >
             <FontAwesomeIcon icon={faClose} className="w-5 h-5 text-2xl hover:text-[#3b82f6] cursor-pointer" />
           </button>
           <h2 className="text-xl font-semibold mb-4">Контакт форма</h2>

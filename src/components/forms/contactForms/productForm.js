@@ -56,32 +56,26 @@ export default function ProductForm({ selectedProduct }) {
             <input name="ime" type="text" value={formData.ime} onChange={handleChange} required />
           </div>
           <div className="input-div w-1/2">
-            <label>Презиме*</label>
-            <input name="prezime" type="text" value={formData.prezime} onChange={handleChange} required />
+            <label for="prezime">Презиме*</label>
+            <input id="prezime" name="prezime" type="text" value={formData.prezime} onChange={handleChange} required />
           </div>
         </div>
         <div className="input-div">
-          <label>E-mail*</label>
-          <input name="email" type="email" value={formData.email} onChange={handleChange} required />
+          <label for="email">E-mail*</label>
+          <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="input-div">
-          <label>Порака</label>
-          <textarea name="poraka" value={formData.poraka} onChange={handleChange} required />
+          <label for="poraka">Порака</label>
+          <textarea id="poraka" name="poraka" value={formData.poraka} onChange={handleChange} required />
         </div>
         <input value={`Производ: ${selectedProduct}`} disabled />
         <div className="input-div">
-          <label>Количина:</label>
-          <input name="kolicina" type="number" min="1" placeholder="Количина" required value={formData.kolicina} onChange={handleChange} />
+          <label for="kolicina">Количина:</label>
+          <input id="kolicina" name="kolicina" type="number" min="1" placeholder="Количина" required value={formData.kolicina} onChange={handleChange} />
         </div>
       </div>
       <div className="flex flex-col gap-2 self-center">
-        <TurnstileWidget
-          onVerify={handleVerify}
-          onError={handleError}
-          onExpire={handleExpire}
-          autoVerify={true}
-          theme="light" 
-          size="normal"
+        <TurnstileWidget onVerify={handleVerify} onError={handleError} onExpire={handleExpire} autoVerify={true} theme="light" size="normal"
         />
         {error && <p className="text-red-500 text-sm">Грешка: {error}</p>}
       </div>

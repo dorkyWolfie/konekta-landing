@@ -4,7 +4,6 @@ import { CloseMenu, OpenMenu } from '@/components/mobMenu';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 export default async function Header () {
     return (
          <header className="bg-white shadow-sm py-3 fixed top-0 left-0 right-0 z-1">
@@ -26,15 +25,11 @@ export default async function Header () {
             </div>
             <div className="md:hidden flex items-center justify-between relative px-10">
                 <Link href={"/"}><Image src="/konekta_logo_0.webp" alt="logo" width={70} height={50} /></Link>
-                <button 
-                    onClick={OpenMenu} 
-                    className="text-[#3b82f6] py-2 px-3">
+                <button onClick={OpenMenu} className="text-[#3b82f6] py-2 px-3">
                     <FontAwesomeIcon icon={faBars} size="lg" />
                 </button>
                 <nav id="header" className="absolute top-13 left-0 right-0 flex flex-col gap-2 justify-center hidden font-[600] bg-white/60 backdrop-blur-md p-10">
-                    <button 
-                        onClick={CloseMenu}
-                        className="absolute top-2 right-14 text-xl font-bold cursor-pointer" >
+                    <button onClick={CloseMenu} className="absolute top-2 right-14 text-xl font-bold cursor-pointer" >
                         <FontAwesomeIcon icon={faClose} size="lg" />
                     </button>
                     <Link className="hover:text-[#3b82f6]" href={"/#proizvodi"}>Производи</Link>

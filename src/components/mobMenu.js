@@ -2,14 +2,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
-// OPEN MOBILE SIDEBAR (ASIDE)
-export function openAside() {
-  const sidebar = document.getElementById("sidebar");
-  if (!sidebar) return;
-
-  sidebar.classList.toggle("hidden");
-}
-
 // OPEN MOBILE HEADER
 export function OpenMenu() {
   document.getElementById("header").style.display = "flex";
@@ -29,7 +21,7 @@ export function scrollTop() {
 // BUTTON SCROLL TO TOP
 export default function ScrollButton() {
   return (
-    <button onClick={scrollTop} className="absolute bottom-6 right-20 fixed px-3 py-2 bg-[#3b82f6] rounded-full text-white hover:bg-[#1d4ed8] z-10">
+    <button onClick={scrollTop} className="absolute bottom-6 right-20 max-sm:right-4 fixed px-3 py-2 bg-[#2563eb] rounded-full text-white hover:bg-[#1d4ed8] z-10">
       <FontAwesomeIcon icon={faArrowUp} className='w-4 h-4' />
     </button>
   );

@@ -29,7 +29,7 @@ export default function ProductSection({ proizvodi }) {
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 max-sm:grid-cols-1 gap-6">
         {proizvodi.map((proizvod, index) => (
-          <div
+          <div 
             key={index}
             onClick={() => {
               setSelectedProduct(proizvod);
@@ -56,9 +56,7 @@ export default function ProductSection({ proizvodi }) {
       {/* ---- DESCRIPTION POPUP ---- */}
       {showDescription && selectedProduct && (
         <PopUp>
-          <button
-            onClick={() => setShowDescription(false)}
-            className="absolute top-4 right-4 text-lg font-bold">
+          <button onClick={() => setShowDescription(false)} className="absolute top-4 right-4 text-lg font-bold">
             <FontAwesomeIcon icon={faClose} className="w-5 h-5 text-2xl hover:text-[#3b82f6]" />
           </button>
           <h2 className="text-xl font-bold mb-2">{selectedProduct.name}</h2>
@@ -77,9 +75,7 @@ export default function ProductSection({ proizvodi }) {
       {/* ---- CONTACT FORM POPUP ---- */}
       {showContactForm && selectedProduct && (
         <PopUp>
-          <button
-            onClick={() => setShowContactForm(false)}
-            className="absolute top-4 right-4 text-lg font-bold" >
+          <button onClick={() => setShowContactForm(false)} className="absolute top-4 right-4 text-lg font-bold" >
             <FontAwesomeIcon icon={faClose} className="w-5 h-5 text-2xl hover:text-[#3b82f6]" />
           </button>
           <h2 className="text-xl font-bold pb-4">Контакт за: {selectedProduct.name}</h2>

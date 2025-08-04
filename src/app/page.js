@@ -32,7 +32,7 @@ export default function Home() {
             <button className="button-2"><Link href="/#kako-funkcionira">Види како функционира</Link></button>
           </div>
         </div>
-        <Image src="/konekta-hero.webp" alt="picture" width={380} height={380} className="max-md:w-[200px]" />
+        <Image src="/konekta-hero.webp" alt="telefon so otvoren konekta profil i konekta karticka" width={380} height={380} className="max-md:w-[200px]" />
       </section>
       {/* ---- ZOSTO SECTION ---- */}
       <section className="max-w-6xl flex flex-col gap-6 items-center">
@@ -68,7 +68,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <Image src="/konekta-karticka.webp" alt="picture" width={400} height={400} className="w-[400px] max-md:w-[300px]" />
+          <Image src="/konekta-karticka.webp" alt="konekta karticka" width={400} height={400} className="w-[400px] max-md:w-[300px]" />
         </div>
       </section>
       {/* ---- FEATURES SECTION ---- */}
@@ -80,7 +80,7 @@ export default function Home() {
               <div key={index} className="box-border flex-col items-left p-4 gap-2">
                 <div className="flex flex-row gap-2 items-center">
                   <div>{feature.icon}</div>
-                  <h4>{feature.title}</h4>
+                  <h3 className="text-sm font-[700]">{feature.title}</h3>
                 </div>
                 <p>{feature.description}</p>
               </div>
@@ -170,9 +170,7 @@ export default function Home() {
         <div className="text-center font-[800]">
           <h3 className="text-lg text-[#2563eb]">Не знаеш од каде да почнеш?</h3>
           <h3 className="text-sm mt-2 mb-4">Контактирај нè и ќе ти помогнеме да го избереш најдоброто решение за тебе или твојот бизнис.</h3>
-          <button 
-            onClick={() => setShowContactForm(true)} 
-            className="button-1">
+          <button onClick={() => setShowContactForm(true)} className="button-1">
             КОНТАКТИРАЈ НЕ!
           </button>
         </div>
@@ -194,9 +192,7 @@ export default function Home() {
       </section>
       {showContactForm && (
         <PopUp>
-          <button
-            onClick={() => setShowContactForm(false)}
-            className="absolute top-2 right-3 text-lg font-bold" >
+          <button onClick={() => setShowContactForm(false)} className="absolute top-2 right-3 text-lg font-bold" >
             <FontAwesomeIcon icon={faClose} className="w-5 h-5 text-2xl hover:text-[#3b82f6]" />
           </button>
           <ContactForm />

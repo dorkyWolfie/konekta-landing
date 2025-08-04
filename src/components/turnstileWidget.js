@@ -184,16 +184,5 @@ export function useTurnstile(autoVerify = false) {
     return await verifyWithServer(token);
   };
 
-  return {
-    token,
-    error,
-    isVerified,
-    isVerifying,
-    widgetRef,
-    handleVerify,
-    handleError,
-    handleExpire,
-    verify,
-    reset,
-  };
+  return { token, error, isVerified, isVerifying, widgetRef, handleVerify, handleError, handleExpire, verify, reset, };
 }

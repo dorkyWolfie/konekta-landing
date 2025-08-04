@@ -51,33 +51,26 @@ export default function PackageForm({ selectedPlan }) {
       <div className="flex flex-col gap-4">
         <div className="flex flex-row gap-6 justify-between">
           <div className="input-div w-1/2">
-            <label>Име*</label>
-            <input name="ime" type="text" value={formData.ime} onChange={handleChange} required />
+            <label for="ime">Име*</label>
+            <input id="ime" name="ime" type="text" value={formData.ime} onChange={handleChange} required />
           </div>
           <div className="input-div w-1/2">
-            <label>Презиме*</label>
-            <input name="prezime" type="text" value={formData.prezime} onChange={handleChange} required />
+            <label for="prezime">Презиме*</label>
+            <input id="prezime" name="prezime" type="text" value={formData.prezime} onChange={handleChange} required />
           </div>
         </div>
         <div className="input-div">
-          <label>E-mail*</label>
-          <input name="email" type="email" value={formData.email} onChange={handleChange} required />
+          <label for="email">E-mail*</label>
+          <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="input-div">
-          <label>Порака</label>
-          <textarea name="poraka" value={formData.poraka} onChange={handleChange} required />
+          <label for="poraka">Порака</label>
+          <textarea id="poraka" name="poraka" value={formData.poraka} onChange={handleChange} required />
         </div>
         <input value={`Избран пакет: ${selectedPlan}`} disabled />
       </div>
       <div className="flex flex-col gap-2 self-center">
-        <TurnstileWidget
-          onVerify={handleVerify}
-          onError={handleError}
-          onExpire={handleExpire}
-          autoVerify={true}
-          theme="light" 
-          size="normal"
-        />
+        <TurnstileWidget onVerify={handleVerify} onError={handleError} onExpire={handleExpire} autoVerify={true} theme="light" size="normal" />
         {error && <p className="text-red-500 text-sm">Грешка: {error}</p>}
       </div>
       <button type="submit" className="button-1" disabled={loading} >
