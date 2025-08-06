@@ -1,9 +1,10 @@
 import "./globals.css";
-import { Manrope } from 'next/font/google'
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ScrollButton from "@/components/mobMenu";
-import { Toaster } from 'react-hot-toast';
+import { Manrope } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 export const metadata = {
   title: "Конекта",
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
         <Toaster />
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-83G19DTXF2" />
     </html>
   );
 }
