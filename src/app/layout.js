@@ -49,8 +49,8 @@ export default function RootLayout({ children }) {
         {children}
         <Toaster />
         <Footer />
+        <GoogleAnalytics gaId="G-83G19DTXF2" />
       </body>
-      <GoogleAnalytics gaId="G-83G19DTXF2" />
     </html>
   );
 }
