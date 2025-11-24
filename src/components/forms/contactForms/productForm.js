@@ -56,21 +56,21 @@ export default function ProductForm({ selectedProduct }) {
             <input name="ime" type="text" value={formData.ime} onChange={handleChange} required />
           </div>
           <div className="input-div w-1/2">
-            <label for="prezime">Презиме*</label>
+            <label htmlFor="prezime">Презиме*</label>
             <input id="prezime" name="prezime" type="text" value={formData.prezime} onChange={handleChange} required />
           </div>
         </div>
         <div className="input-div">
-          <label for="email">E-mail*</label>
+          <label htmlFor="email">E-mail*</label>
           <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="input-div">
-          <label for="poraka">Порака</label>
+          <label htmlFor="poraka">Порака</label>
           <textarea id="poraka" name="poraka" value={formData.poraka} onChange={handleChange} required />
         </div>
         <input value={`Производ: ${selectedProduct}`} disabled />
         <div className="input-div">
-          <label for="kolicina">Количина:</label>
+          <label htmlFor="kolicina">Количина:</label>
           <input id="kolicina" name="kolicina" type="number" min="1" placeholder="Количина" required value={formData.kolicina} onChange={handleChange} />
         </div>
       </div>

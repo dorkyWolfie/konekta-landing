@@ -51,20 +51,20 @@ export default function PackageForm({ selectedPlan }) {
       <div className="flex flex-col gap-4">
         <div className="flex flex-row gap-6 justify-between">
           <div className="input-div w-1/2">
-            <label for="ime">Име*</label>
+            <label htmlFor="ime">Име*</label>
             <input id="ime" name="ime" type="text" value={formData.ime} onChange={handleChange} required />
           </div>
           <div className="input-div w-1/2">
-            <label for="prezime">Презиме*</label>
+            <label htmlFor="prezime">Презиме*</label>
             <input id="prezime" name="prezime" type="text" value={formData.prezime} onChange={handleChange} required />
           </div>
         </div>
         <div className="input-div">
-          <label for="email">E-mail*</label>
+          <label htmlFor="email">E-mail*</label>
           <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="input-div">
-          <label for="poraka">Порака</label>
+          <label htmlFor="poraka">Порака</label>
           <textarea id="poraka" name="poraka" value={formData.poraka} onChange={handleChange} required />
         </div>
         <input value={`Избран пакет: ${selectedPlan}`} disabled />
