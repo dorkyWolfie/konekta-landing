@@ -107,7 +107,7 @@ export default function Home() {
             <p>Почни да го споделуваш твојот дигитален профил.</p>
           </div>
         </div>
-        <div className="flex flex-row flex-wrap gap-10 font-[700]  text-[#4b5563] opacity-80 max-md:gap-4 ">
+        <div className="flex flex-row flex-wrap gap-10 font-[700] text-[#4b5563] opacity-80 max-md:gap-4 max-md:justify-center">
           <p className="flex items-center gap-2">
             <FontAwesomeIcon icon={faSquareCheck} className="w-5 h-5 text-[#3b82f6]" />
             <span className="text-xs">подржано од повеќето Android и iPhone уреди</span>
