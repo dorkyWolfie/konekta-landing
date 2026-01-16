@@ -98,7 +98,7 @@ h1 {
 }
 
 h2 {
-  @apply text-xl font-bold tracking-wide;
+  @apply text-xl font-bold tracking-wide text-center;
 }
 
 h4 {
@@ -229,14 +229,45 @@ textarea {
 }
 /* ---- CONTACT FORM END ---- */
 
-/* ---- WAVE BG START ---- */
-.custom-shape-divider-top {
-  @apply absolute -top-1 left-0 right-0 w-full fill-[#F0F9FF] overflow-x-hidden;
+/* ---- IMAGE ANIMATION ---- */
+@keyframes slideToLeft {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, 60px);
+  }
 }
 
-.custom-shape-divider-top svg {
-  display: block;
-  width: calc(117% + 1.3px);
-  height: 130px;
+.animate-slide {
+  animation: slideToLeft 2s ease-in-out infinite;
 }
-/* ---- WAVE BG END ---- */
+
+.animatedImage {
+  @apply -z-5 absolute -top-10 right-20;
+}
+
+@media screen and (max-width: 767px) {
+  .animatedImage {
+    @apply -top-10 left-20;
+  } 
+}
+
+@media screen and (max-width: 640px) {
+  .animatedImage {
+    @apply -top-10 left-10;
+  } 
+}
+
+@media screen and (max-width: 580px) {
+  .animatedImage {
+    @apply -top-10 -left-5;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .animatedImage {
+    @apply -top-10 -left-15;
+  }
+}
+/* ---- IMAGE ANIMATION END ---- */

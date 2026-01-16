@@ -23,78 +23,114 @@ export default function PriceSlider() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
-        {/* ---- PAKET 1 ---- */}
+      <div className="grid grid-cols-1 gap-6">
+        {/* ---- PAKET 0 ---- */}
         <div className="flex flex-col justify-between my-auto text-lg border border-[#4f46e5]/30 bg-[#eef2ff] p-10 w-full h-full">
           <div>
-            <p className="text-[#3730a3]">Лична Конекта</p>
-            <p className="text-4xl mt-5 font-[500] text-center">1 500 МКД</p>
-            <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно + ддв</p>
-            <p className="text-sm font-[400]">Совршено решение за фриленсери и индивидуалци.</p>
-            <ul className="my-5 pl-5 list-disc">
-              <li>1 профил</li>
-              <li>Вклучен 1 NFC токен (по твој избор)</li>
-              <li>Основни информации</li>
-              <li>Контакт информации</li>
-              <li>Линкови</li>
-              <li>Аналитика</li>
-              <li>vCard</li>
-              <li>Вклучен дизајн по нарачка</li>
-              <li>Вклучено неограничено програмирање на NFC токен</li>
-              <li>Брза поддршка за се што ти треба</li>
+            <p className="text-[#3730a3]">Тест Конекта</p>
+            <p className="text-4xl mt-5 font-[500] ">0 МКД</p>
+            <p className="text-sm font-[400]">Не си сигурен/а? Тестирај го профилот 7 дена па одлучи.</p>
+            <ul className="my-5 pl-5 list-disc flex items-top gap-20 max-md:flex-col max-md:gap-0">
+              <div>
+                <li>1 профил</li>
+                <li>Основни информации</li>
+                <li>Контакт информации</li>
+              </div>
+              <div>
+                <li>Линкови</li>
+                <li>Датотеки</li>
+                <li>Аналитика</li>
+              </div>
+              <div>
+                <li>Контакти</li>
+                <li>vCard</li>
+                <li>Брза поддршка за се што ти треба</li>
+              </div>
             </ul>
           </div>
-          <button onClick={() => handleOpenForm('Лична Конекта')} className="w-full p-3 bg-[#4f46e5] hover:bg-[#3730a3] transition-all text-white cursor-pointer">
-            Претплати се сега
+          <button className="w-full p-3 bg-[#4f46e5] hover:bg-[#3730a3] transition-all text-white cursor-pointer">
+            <a href="https://app.konekta.mk/registracija">Регистрирај се сега</a>
           </button>
         </div>
-        {/* ---- PAKET 2 ---- */}
-        <div className="flex flex-col justify-between my-auto text-lg border border-[#2563eb]/30 bg-[#eff6ff] p-10 w-full h-full">
-          <div>
-            <p className="text-[#1e40af]">Тимска Конекта</p>
-            <p className="text-4xl mt-5 font-[500] text-center">1 200 МКД</p>
-            <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно/профил + ддв</p>
-            <p className="text-sm font-[400]">Идеално за мали тимови – претстави го брендот како што заслужува.</p>
-            <ul className="my-5 pl-5 list-disc">
-              <li>2 до 5 профили</li>
-              <li>Вклучен 1 NFC токен за секој профил (по твој избор)</li>
-              <li>Основни информации</li>
-              <li>Контакт информации</li>
-              <li>Линкови</li>
-              <li>Аналитика</li>
-              <li>vCard</li>
-              <li>Вклучен дизајн по нарачка</li>
-              <li>Вклучено неограничено програмирање на NFC токен</li>
-              <li>Брза поддршка за се што ти треба</li>
-            </ul>
+        <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+          {/* ---- PAKET 1 ---- */}
+          <div className="flex flex-col justify-between my-auto text-lg border border-[#4f46e5]/30 bg-[#eef2ff] p-10 w-full h-full">
+            <div>
+              <p className="text-[#3730a3]">Лична Конекта</p>
+              <p className="text-4xl mt-5 font-[500] text-center">1 500 МКД</p>
+              <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно + ддв</p>
+              <p className="text-sm font-[400]">Совршено решение за фриленсери и индивидуалци.</p>
+              <ul className="my-5 pl-5 list-disc">
+                <li>1 профил</li>
+                <li>Вклучен 1 NFC токен (по твој избор)</li>
+                <li>Основни информации</li>
+                <li>Контакт информации</li>
+                <li>Линкови</li>
+                <li>Датотеки</li>
+                <li>Аналитика</li>
+                <li>Контакти</li>
+                <li>vCard</li>
+                <li>Вклучен дизајн по нарачка</li>
+                <li>Вклучено неограничено програмирање на NFC токен</li>
+                <li>Брза поддршка за се што ти треба</li>
+              </ul>
+            </div>
+            <button onClick={() => handleOpenForm('Лична Конекта')} className="w-full p-3 bg-[#4f46e5] hover:bg-[#3730a3] transition-all text-white cursor-pointer">
+              Претплати се сега
+            </button>
           </div>
-          <button onClick={() => handleOpenForm('Тимска Конекта')} className="w-full p-3 bg-[#2563eb] hover:bg-[#1e40af] transition-all text-white cursor-pointer">
-            Претплати се сега
-          </button>
-        </div>
-        {/* ---- PAKET 3 ---- */}
-        <div className="flex flex-col justify-between my-auto text-lg border border-[#7c3aed]/30 bg-[#f5f3ff] p-10 w-full h-full">
-          <div>
-            <p className="text-[#5b21b6]">Бизнис Конекта</p>
-            <p className="text-4xl mt-5 font-[500] text-center">800 МКД</p>
-            <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно/профил + ддв</p>
-            <p className="text-sm font-[400]">За компании што растат.</p>
-            <ul className="my-5 pl-5 list-disc">
-              <li>6+ профили</li>
-              <li>Вклучен 1 NFC токен за секој профил (по твој избор)</li>
-              <li>Основни информации</li>
-              <li>Контакт информации</li>
-              <li>Линкови</li>
-              <li>Аналитика</li>
-              <li>vCard</li>
-              <li>Вклучен дизајн по нарачка</li>
-              <li>Вклучено неограничено програмирање на NFC токен</li>
-              <li>Брза поддршка за се што ти треба</li>
-            </ul>
+          {/* ---- PAKET 2 ---- */}
+          <div className="flex flex-col justify-between my-auto text-lg border border-[#2563eb]/30 bg-[#eff6ff] p-10 w-full h-full">
+            <div>
+              <p className="text-[#1e40af]">Тимска Конекта</p>
+              <p className="text-4xl mt-5 font-[500] text-center">1 200 МКД</p>
+              <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно/профил + ддв</p>
+              <p className="text-sm font-[400]">Идеално за мали тимови – претстави го брендот како што заслужува.</p>
+              <ul className="my-5 pl-5 list-disc">
+                <li>2 до 5 профили</li>
+                <li>Вклучен 1 NFC токен за секој профил (по твој избор)</li>
+                <li>Основни информации</li>
+                <li>Контакт информации</li>
+                <li>Линкови</li>
+                <li>Датотеки</li>
+                <li>Аналитика</li>
+                <li>Контакти</li>
+                <li>vCard</li>
+                <li>Вклучен дизајн по нарачка</li>
+                <li>Вклучено неограничено програмирање на NFC токен</li>
+                <li>Брза поддршка за се што ти треба</li>
+              </ul>
+            </div>
+            <button onClick={() => handleOpenForm('Тимска Конекта')} className="w-full p-3 bg-[#2563eb] hover:bg-[#1e40af] transition-all text-white cursor-pointer">
+              Претплати се сега
+            </button>
           </div>
-          <button onClick={() => handleOpenForm('Бизнис Конекта')} className="w-full p-3 bg-[#7c3aed] hover:bg-[#5b21b6] transition-all text-white cursor-pointer">
-            Претплати се сега
-          </button>
+          {/* ---- PAKET 3 ---- */}
+          <div className="flex flex-col justify-between my-auto text-lg border border-[#7c3aed]/30 bg-[#f5f3ff] p-10 w-full h-full">
+            <div>
+              <p className="text-[#5b21b6]">Бизнис Конекта</p>
+              <p className="text-4xl mt-5 font-[500] text-center">800 МКД</p>
+              <p className="text-sm font-[700] -mt-1 pb-4 text-center tracking-wide">годишно/профил + ддв</p>
+              <p className="text-sm font-[400]">За компании што растат.</p>
+              <ul className="my-5 pl-5 list-disc">
+                <li>6+ профили</li>
+                <li>Вклучен 1 NFC токен за секој профил (по твој избор)</li>
+                <li>Основни информации</li>
+                <li>Контакт информации</li>
+                <li>Линкови</li>
+                <li>Датотеки</li>
+                <li>Аналитика</li>
+                <li>Контакти</li>
+                <li>vCard</li>
+                <li>Вклучен дизајн по нарачка</li>
+                <li>Вклучено неограничено програмирање на NFC токен</li>
+                <li>Брза поддршка за се што ти треба</li>
+              </ul>
+            </div>
+            <button onClick={() => handleOpenForm('Бизнис Конекта')} className="w-full p-3 bg-[#7c3aed] hover:bg-[#5b21b6] transition-all text-white cursor-pointer">
+              Претплати се сега
+            </button>
+          </div>
         </div>
       </div>
       {showContactForm && (
