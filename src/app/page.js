@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt, faLock, faRepeat, faClose } from "@fortawesome/free-solid-svg-icons";
 import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import Faq from "@/components/faq";
+import ImageAnimation from "@/components/imageAnimation";
 
 
 export default function Home() {
@@ -37,9 +38,9 @@ export default function Home() {
       {/* ---- ZOSTO SECTION ---- */}
       <section className="max-w-6xl flex flex-col gap-6 items-center">
         <h2>Зошто паметна визит картичка?</h2>
-        <div className="flex flex-row items-center justify-between gap-5 max-md:gap-6 max-md:flex-wrap-reverse max-md:justify-center">
+        <div className="flex flex-row items-center justify-between gap-5 max-md:gap-6 max-md:flex-wrap-reverse max-md:justify-center relative">
           <div className="w-3/5 max-md:w-full flex flex-col gap-6">
-            <p>Конекта не е само картичка – тоа е твојот прв впечаток. Со интегрирана NFC   технологија и уникатен QR код, таа овозможува споделување на твоите контакти, линкови,  профили и многу повеќе – <strong>со само еден допир.</strong></p>
+            <p>Конекта не е само картичка – тоа е твојот прв впечаток. Со интегрирана NFC технологија и уникатен QR код, таа овозможува споделување на твоите контакти, линкови,  профили и многу повеќе – <strong>со само еден допир.</strong></p>
             <div className="flex flex-col gap-4">
               <h3 className="text-lg font-[800] tracking-wide">Зошто ќе ја засакаш?</h3>
               <div>
@@ -68,7 +69,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <Image src="/konekta-karticka.webp" alt="konekta karticka" width={400} height={400} className="w-[400px] max-md:w-[300px]" />
+          <ImageAnimation />
         </div>
       </section>
       {/* ---- FEATURES SECTION ---- */}
