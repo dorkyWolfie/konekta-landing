@@ -12,6 +12,7 @@ export default function ProductSection({ proizvodi }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
     if (showDescription || showContactForm) {
@@ -33,45 +34,78 @@ export default function ProductSection({ proizvodi }) {
             key={index}
             onClick={() => {
               setSelectedProduct(proizvod);
+              setActiveImageIndex(0);
               setShowDescription(true);
             }}
-            className="aspect-square object-contain shadow bg-white p-4 flex flex-col items-center justify-center gap-2 hover:scale-105 hover:bg-[#dbeafe] transition-all duration-300 cursor-pointer" >
-            <Image src={proizvod.image} alt={proizvod.name} width={150} height={150} />
-            <div className="text-sm flex flex-row justify-between gap-2 w-full">
+            className="object-contain shadow bg-white p-4 flex flex-col items-center justify-end gap-2 hover:scale-105 hover:bg-[#dbeafe] transition-all duration-300 cursor-pointer" >
+            <Image src={proizvod.image1 || proizvod.image} alt={proizvod.name} width={150} height={150} />
+            <div className="text-sm flex flex-row justify-between gap-2 w-full mt-4">
               <h3 className="font-[700]">{proizvod.name}</h3>
               <p className="font-[500] text-[#1f2937]">{proizvod.price}</p>
             </div>
             <button
-              className="button-1 mt-2"
+              className="button-1 mt-4"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedProduct(proizvod);
-                setShowContactForm(true);
+                setShowDescription(true);
               }} >
-              Купи сега
+              Дознај повеќе
             </button>
           </div>
         ))}
       </div>
       {/* ---- DESCRIPTION POPUP ---- */}
-      {showDescription && selectedProduct && (
-        <PopUp>
-          <button onClick={() => setShowDescription(false)} className="absolute top-4 right-4 text-lg font-bold">
-            <FontAwesomeIcon icon={faClose} className="w-5 h-5 text-2xl hover:text-[#3b82f6]" />
-          </button>
-          <h2 className="text-xl font-bold mb-2">{selectedProduct.name}</h2>
-          <Image src={selectedProduct.image} alt={selectedProduct.name} width={200} height={200}className="mx-auto mb-4" />
-          <h3 className="font-[700] pt-2">Опис:</h3>
-          <p>{selectedProduct.description}</p>
-          <h3 className="font-[700] pt-2">Карактеристики:</h3>
-          <ul className="list-disc pl-5">
-            {selectedProduct.features?.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-          <h3 className="font-[700] pt-2">Цена: {selectedProduct.price}</h3>
-        </PopUp>
-      )}
+      {showDescription && selectedProduct && (() => {
+        const images = [1,2,3,4,5].map(n => selectedProduct[`image${n}`]).filter(Boolean);
+        if (!images.length && selectedProduct.image) images.push(selectedProduct.image);
+        return (
+          <PopUp>
+            <button onClick={() => setShowDescription(false)} className="absolute top-4 right-4 text-lg font-bold">
+              <FontAwesomeIcon icon={faClose} className="w-5 h-5 text-2xl hover:text-[#3b82f6]" />
+            </button>
+            <h2 className="text-xl font-bold mb-4">{selectedProduct.name}</h2>
+            {/* Carousel */}
+            <div className="flex flex-col gap-3 mb-5">
+              {/* Main image */}
+              <div className="flex-1 flex items-center justify-center bg-gray-50 rounded min-h-[220px]">
+                <Image src={images[activeImageIndex]} alt={selectedProduct.name} width={300} height={300} className="object-contain max-h-[260px]" />
+              </div>
+              {/* Thumbnails */}
+              <div className="flex flex-row gap-2 grow">
+                {images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImageIndex(i)}
+                    className={`border-2 rounded p-0.5 transition-colors ${i === activeImageIndex ? 'border-[#3b82f6]' : 'border-gray-200 hover:border-gray-400'}`}
+                  >
+                    <Image src={img} alt={`${selectedProduct.name} ${i + 1}`} width={72} height={72} className="object-contain w-[72px] h-[72px]" />
+                  </button>
+                ))}
+              </div>
+            </div>
+            {/* Info */}
+            <p className="mb-4">{selectedProduct.description}</p>
+            <h3 className="mb-2 font-bold">Карактеристики</h3>
+            <ul className="list-disc pl-5 text-md text-gray-700 mb-6">
+              {selectedProduct.features?.map((feature, i) => (
+                <li key={i}>{feature}</li>
+              ))}
+            </ul>
+
+            {/* CTA */}
+            <button
+              className="button-1 w-full"
+              onClick={() => {
+                setShowDescription(false);
+                setShowContactForm(true);
+              }}
+            >
+              Порачај сега
+            </button>
+          </PopUp>
+        );
+      })()}
       {/* ---- CONTACT FORM POPUP ---- */}
       {showContactForm && selectedProduct && (
         <PopUp>
